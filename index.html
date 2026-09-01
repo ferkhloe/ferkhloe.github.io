@@ -7,13 +7,13 @@
   <meta name="description" content="Ferkhloe integra materias primas para bioinsumos, equipos de medición agrícola, protocolos y servicios técnicos para una agricultura más precisa.">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#063b28">
-  <link rel="canonical" href="https://www.ferkhloe.com/">
+  <link rel="canonical" href="https://ferkhloe.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CO">
   <meta property="og:title" content="Ferkhloe | Agricultura más precisa">
   <meta property="og:description" content="Tecnología, bioinsumos y acompañamiento técnico para biofábricas y productores.">
-  <meta property="og:url" content="https://www.ferkhloe.com/">
-  <meta property="og:image" content="https://ferkhloe.webcindario.com/logo%20ferkhloe.png">
+  <meta property="og:url" content="https://ferkhloe.github.io/">
+  <meta property="og:image" content="https://ferkhloe.github.io/logo%20ferkhloe.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -140,7 +140,7 @@
       .footer{grid-template-columns:1fr}
     }
   </style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ferkhloe","url":"https://www.ferkhloe.com/","logo":"https://ferkhloe.webcindario.com/logo%20ferkhloe.png","telephone":"+57-313-774-4450","email":"biofabricaferkhloe@gmail.com"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ferkhloe","url":"https://ferkhloe.github.io/","logo":"https://ferkhloe.github.io/logo%20ferkhloe.png","telephone":"+57-313-774-4450","email":"biofabricaferkhloe@gmail.com"}</script>
 </head>
 <body data-pagina="index">
 <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -300,7 +300,6 @@ document.getElementById('year').textContent=new Date().getFullYear();
       return id;
     }
 
-    // Función global reutilizable para registrar eventos.
     window.ferkhloeTrack = function (tipo, datos) {
       datos = datos || {};
       addDoc(collection(db, 'eventos'), Object.assign({
@@ -309,7 +308,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
         dispositivo: ferkhloeDispositivo(),
         visitorId: ferkhloeVisitorId(),
         timestamp: serverTimestamp()
-      }, datos)).catch(function(){ /* si falla, no afecta al visitante */ });
+      }, datos)).catch(function(){});
     };
 
     window.ferkhloeTrack('visita');
@@ -319,7 +318,6 @@ document.getElementById('year').textContent=new Date().getFullYear();
       if (wa) window.ferkhloeTrack('whatsapp_click');
     });
   } else {
-    // Firebase aún no está configurado: la página funciona sin estadísticas.
     window.ferkhloeTrack = function(){};
   }
 </script>
