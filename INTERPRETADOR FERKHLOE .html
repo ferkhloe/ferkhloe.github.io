@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Inserted by miarroba -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7294310421616689" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://ads.vidoomy.com/miarroba_23335.js" async></script>
+  <script>
+  (function(w,d,s,l,i){
+    w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-T2VG59');
+  </script>
+  <!-- Inserted by miarroba -->
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interpretador Halisense Soil Tester – HAT3 (v2.9)</title>
+
+  <style>
+    :root{
+      --bg:#eef8f1;
+      --card:#ffffff;
+      --text:#123022;
+      --muted:#4f6f5e;
+      --accent:#2f8f5b;
+      --border:#cfe6d8;
+      --chip:#e9f6ee;
+      --shadow:0 10px 26px rgba(10,40,25,.10);
+    }
+
+    *{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial}
+    html,body{margin:0;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 16px 26px}
+    .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:16px}
+    @media(max-width:980px){.grid{grid-template-columns:1fr}}
+
+    .topbar{
+      max-width:1100px;margin:0 auto;padding:14px 16px 6px;
+      display:flex;align-items:center;gap:12px
+    }
+    .logo{
+      width:54px;height:54px;border-radius:12px;background:#fff;
+      border:1px solid var(--border);box-shadow:var(--shadow);padding:6px;object-fit:contain
+    }
+    .titlebox{display:flex;flex-direction:column;line-height:1.05}
+    .titlebox .t1{font-weight:800;font-size:1.15rem}
+    .titlebox .t2{color:var(--muted);font-size:.88rem;margin-top:4px}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow:var(--shadow)
+    }
+    .card h3{
+      margin:0;padding:12px 14px;
+      border-bottom:1px solid var(--border);
+      font-size:1.03rem
+    }
+    .content{padding:12px 14px}
+
+    label{display:block;margin:.45rem 0 .15rem;color:var(--muted);font-size:.9rem}
+    select,input,textarea{
+      width:100%;padding:10px 12px;border-radius:12px;
+      border:1px solid var(--border);
+      background:#f6fbf8;color:var(--text)
+    }
+    textarea{min-height:92px;resize:vertical}
+    input[type=number]{appearance:textfield}
+    .row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+
+    .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    button{
+      cursor:pointer;border:none;border-radius:12px;padding:10px 14px;
+      background:var(--accent);color:white;font-weight:800
+    }
+    button.secondary{
+      background:#ffffff;color:var(--text);
+      border:1px solid var(--border)
+    }
+
+    .small{font-size:.8rem;color:var(--muted);margin-top:8px}
+    .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .badge{
+      background:#f2fbf6;border:1px solid var(--border);
+      border-radius:999px;padding:8px 10px;font-size:.82rem
+    }
+
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .pill{
+      padding:7px 10px;border-radius:999px;border:1px solid var(--border);
+      background:var(--chip);font-size:.78rem
+    }
+
+    /* SEMÁFORO: Bajo=Rojo | Óptimo=Verde | Alto=Azul oscuro */
+    .lvl-vb,.lvl-b,.lvl-mb{
+      background: rgba(192,57,43,.22);
+      border-color: rgba(192,57,43,.55);
+      color:#641e16;
+    }
+    .lvl-m{
+      background: rgba(39,174,96,.25);
+      border-color: rgba(39,174,96,.55);
+      color:#145a32;
+    }
+    .lvl-ma,.lvl-a,.lvl-va{
+      background: rgba(13,58,110,.25);
+      border-color: rgba(13,58,110,.55);
+      color:#0b2c4a;
+    }
+
+    .rec{white-space:pre-wrap;line-height:1.35}
+    .muted{color:var(--muted)}
+    .hr{height:1px;background:var(--border);margin:12px 0}
+
+    /* SANIDAD por cultivo */
+    .tag{
+      display:inline-block;
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-size:.75rem;
+      margin:4px 6px 0 0;
+      cursor:pointer;
+      user-select:none;
+    }
+    .tag:hover{background:#f2fbf6}
+    .san-box{
+      border:1px solid var(--border);
+      background:#f6fbf8;
+      border-radius:14px;
+      padding:10px 12px;
+      margin-top:10px;
+    }
+    .san-title{font-weight:800;margin:0 0 8px;font-size:.95rem}
+    .san-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:980px){.san-grid{grid-template-columns:1fr}}
+    .san-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+
+    table{width:100%;border-collapse:separate;border-spacing:0;margin-top:10px}
+    th,td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.9rem}
+    th{color:var(--muted);text-align:left}
+    .twrap{overflow:auto;border:1px solid var(--border);border-radius:14px;background:#fff}
+    .typeChip{
+      display:inline-block;
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--chip);
+      font-size:.75rem;
+    }
+
+    .hint{
+      font-size:.82rem;color:var(--muted);
+      margin-top:6px;
+    }
+
+    /* BLOQUEO POR CLAVE */
+    #app{display:none;}
+    .lock{
+      position:fixed; inset:0;
+      background:rgba(238,248,241,.92);
+      display:flex; align-items:center; justify-content:center;
+      padding:18px; z-index:9999;
+    }
+    .lockCard{
+      width:min(520px,100%);
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+    .lockTitle{font-weight:800;font-size:1.05rem;margin:0 0 6px}
+    .lockSub{color:var(--muted);font-size:.9rem;margin:0 0 12px}
+    .lockRow{display:flex; gap:8px; margin-top:10px}
+    .lockRow input{flex:1}
+    .lockErr{color:#b03a2e;font-size:.85rem;margin-top:8px;display:none}
+    .lockHint{color:var(--muted);font-size:.78rem;margin-top:10px}
+  </style>
+</head>
+
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2VG59" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Pantalla de clave -->
+  <div id="lock" class="lock">
+    <div class="lockCard">
+      <p class="lockTitle">Acceso restringido</p>
+      <p class="lockSub">Ingresa la clave para abrir el interpretador.</p>
+
+      <label>Clave
+        <input id="pass" type="password" placeholder="Escribe la clave">
+      </label>
+
+      <div class="lockRow">
+        <button id="btnUnlock">Abrir</button>
+        <button id="btnClear" class="secondary" type="button">Limpiar</button>
+      </div>
+
+      <div id="lockErr" class="lockErr">Clave incorrecta.</div>
+      <div class="lockHint">Nota: bloqueo del lado del navegador (no es seguridad “servidor”).</div>
+    </div>
+  </div>
+
+  <!-- App -->
+  <div id="app">
+    <div class="topbar">
+      <img class="logo" src="https://ferkhloe.webcindario.com/logo%20ferkhloe.png" alt="Ferkhloe">
+      <div class="titlebox">
+        <div class="t1">Interpretador Halisense Soil Tester – HAT3</div>
+        <div class="t2">v2.9 • Semáforo + recomendaciones + sanidad por cultivo</div>
+      </div>
+    </div>
+
+    <div class="wrap grid">
+      <section class="card">
+        <h3>Lecturas de campo</h3>
+        <div class="content">
+          <label>Cultivo <select id="crop"></select></label>
+
+          <div class="row">
+            <div><label>Fase <select id="fase"></select></label></div>
+            <div><label>Temperatura (°C) <input id="t" type="number" placeholder="28"></label></div>
+          </div>
+
+          <div class="row3" style="margin-top:6px">
+            <div><label>pH <input id="pH" type="number" step="0.1" placeholder="5.8"></label></div>
+            <div><label>CE (µS/cm) <input id="ec" type="number" placeholder="450"></label></div>
+            <div><label>Humedad (%) <input id="hum" type="number" step="0.1" placeholder="35"></label></div>
+          </div>
+
+          <div class="row3" style="margin-top:6px">
+            <div><label>N (mg/kg) <input id="n" type="number" placeholder="40"></label></div>
+            <div><label>P (mg/kg) <input id="p" type="number" placeholder="15"></label></div>
+            <div><label>K (mg/kg) <input id="k" type="number" placeholder="120"></label></div>
+          </div>
+
+          <div class="btns">
+            <button id="evaluate">Evaluar</button>
+            <button class="secondary" id="clear">Limpiar</button>
+            <button class="secondary" id="export">Exportar CSV</button>
+            <button class="secondary" id="print">Imprimir / PDF</button>
+          </div>
+
+          <div class="small">Debug: <span id="debug"></span></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Diagnóstico</h3>
+        <div class="content">
+          <div id="kpi" class="kpis"></div>
+
+          <div style="margin:8px 0">
+            <div class="muted">Semáforo por parámetro (solo si hay rangos)</div>
+            <div id="chips" class="chips"></div>
+          </div>
+
+          <div class="muted" style="margin-top:8px">Recomendaciones HAT3</div>
+          <div id="rec" class="rec"></div>
+
+          <div class="hr"></div>
+
+          <!-- SANIDAD POR CULTIVO -->
+          <div class="san-box">
+            <div class="san-title">Sanidad por cultivo (elige del listado o crea uno nuevo con controles)</div>
+
+            <div class="san-grid">
+              <div>
+                <label>Tipo
+                  <select id="sanTipo">
+                    <option value="plaga">Plaga</option>
+                    <option value="enfermedad">Enfermedad</option>
+                  </select>
+                </label>
+              </div>
+
+              <div>
+                <label>Problema del cultivo (desplegable)
+                  <select id="sanSelect"></select>
+                </label>
+              </div>
+            </div>
+
+            <div class="hint">
+              Comunes en <b><span id="sanCropName"></span></b>:
+              <span id="sanChips"></span>
+            </div>
+
+            <div class="row" style="margin-top:10px">
+              <div>
+                <label>O agrega uno nuevo (opcional)
+                  <input id="sanNuevo" placeholder="Ej: Pulgón / Alternaria / Antracnosis">
+                </label>
+              </div>
+              <div>
+                <label>Controles recomendados (uno por línea)
+                  <textarea id="sanControles" placeholder="Ej:
+APICHI + Jabón potásico + Diatomeas
+Bordelés solo (NO mezclar con visosa)"></textarea>
+                </label>
+              </div>
+            </div>
+
+            <div class="san-actions">
+              <button id="sanAdd">Agregar</button>
+              <button id="sanClear" class="secondary" type="button">Limpiar tabla</button>
+              <button id="sanSave" class="secondary" type="button">Guardar en este navegador</button>
+            </div>
+
+            <div class="twrap" style="margin-top:10px">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width:110px">Tipo</th>
+                    <th>Plaga / Enfermedad</th>
+                    <th>Controles recomendados</th>
+                    <th style="width:90px">Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="sanTableBody">
+                  <tr>
+                    <td colspan="4" class="muted" style="padding:12px">No hay items agregados.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="muted">Resumen de controles (sin repetir)</div>
+            <div id="sanResumen"></div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- Inserted by miarroba -->
+    <script type="text/javascript" src="/hosting__contador__visitas__unicas.php?h=2176696&amp;t=1759181607&amp;k=bb938e665f49333828bb51124d2dfd2f&amp;__muid="></script>
+    <!-- Inserted by miarroba -->
+  </div>
+
+<script>
+/* =========================
+   CLAVE
+   ========================= */
+const APP_PASSWORD = "soil2435";
+
+function $(id){return document.getElementById(id)}
+const dbg=t=>{$('debug').textContent=t}
+
+function showApp(){ $('lock').style.display='none'; $('app').style.display='block'; }
+function setErr(on){ $('lockErr').style.display = on ? 'block' : 'none'; }
+function unlock(){
+  const v = ($('pass').value || '').trim();
+  if(v === APP_PASSWORD){
+    setErr(false);
+    localStorage.setItem('hat3_unlocked','1');
+    showApp();
+  }else setErr(true);
+}
+function lockInit(){
+  if(localStorage.getItem('hat3_unlocked') === '1') showApp();
+  $('btnUnlock').addEventListener('click', unlock);
+  $('btnClear').addEventListener('click', ()=>{ $('pass').value=''; setErr(false); $('pass').focus(); });
+  $('pass').addEventListener('keydown', (e)=>{ if(e.key === 'Enter') unlock(); });
+}
+
+/* =====================
+   Cultivos y rangos
+   (mg/kg y µS/cm)
+   ===================== */
+const CULTIVOS={
+  "Seleccione un cultivo":{pH:[5.2,6.5],EC:[200,600],HUM:[25,40],N:[40,80],P:[15,25],K:[80,150]},
+
+  /* Frutales */
+  "Aguacate Hass":{pH:[5.2,6.5],EC:[200,600],HUM:[25,40],N:[40,80],P:[15,25],K:[80,150]},
+  "Aguacate Papelillo":{pH:[5.2,6.5],EC:[200,600],HUM:[25,40],N:[40,80],P:[15,25],K:[80,150]},
+  "Limon Tahiti":{pH:[5.3,6.0],EC:[300,700],HUM:[25,40],N:[50,90],P:[20,30],K:[90,180]},
+  "Gulupa":{pH:[5.5,6.5],EC:[200,550],HUM:[30,40],N:[40,80],P:[15,35],K:[80,200]},
+  "Guanabana":{pH:[5.5,6.5]},  /* solo pH (no invento rangos NPK/CE/HUM sin tus datos) */
+  "Guayaba":{pH:[4.5,7.0]},    /* solo pH */
+
+  /* Musáceas (separado) */
+  "Banano":{pH:[5.2,7.5],EC:[250,700],HUM:[35,55],N:[20,80],P:[15,35],K:[100,250]},
+  "Platano":{pH:[5.2,7.5],EC:[250,700],HUM:[35,55],N:[20,80],P:[15,35],K:[100,250]},
+
+  /* Hortalizas */
+  "Lechuga":{pH:[5.7,6.5],EC:[150,500],HUM:[25,35],N:[20,30],P:[20,40],K:[100,180]},
+  "Coliflor":{pH:[6.0,7.0],EC:[150,500],HUM:[25,35],N:[20,30],P:[20,40],K:[100,180]},
+  "Repollo":{pH:[5.5,6.5],EC:[150,500],HUM:[25,35],N:[20,30],P:[20,40],K:[100,180]},
+  "Tomate":{pH:[5.8,6.3],EC:[400,900],HUM:[20,35],N:[60,100],P:[25,40],K:[100,200]},
+
+  /* Otros */
+  "Mora de Castilla":{pH:[5.0,5.6],EC:[250,600],HUM:[30,45],N:[40,70],P:[20,30],K:[80,150]},
+  "Pitahaya":{pH:[5.0,5.5],EC:[150,400],HUM:[25,35],N:[30,60],P:[15,25],K:[60,120]},
+  "Piña":{pH:[4.5,6.5],EC:[400,1500],HUM:[25,40],N:[40,60],P:[10,15],K:[150,280]},
+  "Maiz":{pH:[5.5,7.3],EC:[200,800],HUM:[25,40],N:[80,100],P:[10,25],K:[150,300]},
+  "Uva":{pH:[5.5,6.5],EC:[200,1500],HUM:[20,35],N:[20,50],P:[15,30],K:[120,250]},
+  "Cafe":{pH:[5.0,5.6],EC:[200,600],HUM:[30,45],N:[50,90],P:[15,25],K:[80,150]},
+  "Cacao":{pH:[5.0,5.8],EC:[200,600],HUM:[35,55],N:[40,80],P:[15,25],K:[90,180]},
+  "Papaya":{pH:[5.5,6.2],EC:[300,800],HUM:[25,40],N:[60,110],P:[20,35],K:[120,220]},
+
+  /* ✅ Pastos (se quedan) */
+  "Pasto estrella (Star grass)":{pH:[5.0,8.0],EC:[200,1200],HUM:[25,45],N:[20,50],P:[5,15],K:[80,200]},
+  "Kikuyo":{pH:[5.5,7.0],EC:[200,1200],HUM:[25,45],N:[20,50],P:[5,15],K:[80,200]}
+};
+
+const FASES={
+  "Establecimiento":{EC:0.9,N:1,P:1.1,K:0.9},
+  "Vegetativo":{EC:1,N:1.15,P:1,K:1},
+  "Floracion/Induccion":{EC:1,N:0.8,P:1.15,K:1.1},
+  "Fructificacion/Llenado":{EC:1.1,N:0.8,P:1,K:1.2}
+};
+
+/* =====================
+   SANIDAD (BASE)
+   ===================== */
+const SANIDAD_BASE = {
+  /* ===== Aguacate (completo) ===== */
+  "Aguacate Hass": {
+    plagas: [
+      { nombre:"Mosca del ovario (Dasiops spp.)", controles:["Caldo APICHI","Caldo M5","Extracto de tabaco","Mezcla: APICHI + Jabón potásico + Diatomeas"] },
+      { nombre:"Mosca de la fruta (Anastrepha spp.)", controles:["Extracto de tabaco","Caldo APICHI","Mezcla: Extracto de tabaco + Jabón potásico"] },
+      { nombre:"Trips", controles:["Jabón potásico","Caldo sulfopotásico","Caldo APICHI","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Ácaros (arañita roja / cristalino)", controles:["Jabón potásico","Caldo sulfopotásico","Caldo ceniza","Mezcla: Jabón potásico + Sulfopotásico"] },
+      { nombre:"Cochinillas y escamas", controles:["Jabón potásico","Caldo sulfocálcico","Caldo ceniza","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Chinches", controles:["Caldo APICHI","Caldo M5","Mezcla: M5 + Jabón potásico"] },
+      { nombre:"Barrenadores (ramas / tronco)", controles:["Caldo sulfocálcico","Caldo sulfopotásico (lavado de tallos)","Mezcla: Sulfocálcico solo (NO follaje)"] },
+      { nombre:"Nematodos", controles:["Microorganismos de Montaña (MMS líquidos y sólidos)","Pasto fermentado","Mezcla: MMS activados + Desintoxicador de suelo"] }
+    ],
+    enfermedades: [
+      { nombre:"Phytophthora (pudrición radical)", controles:["Microorganismos de Montaña","Pasto fermentado","Desintoxicador de suelo","Mezcla: MMS líquidos + Extracto de leonarditas"] },
+      { nombre:"Antracnosis (Colletotrichum)", controles:["Caldo bordelés","Caldo visosa","Caldo sulfopotásico","Mezcla: Bordelés + Diatomeas"] },
+      { nombre:"Roña / Scab", controles:["Caldo bordelés","Caldo visosa","Mezcla: Visosa solo"] },
+      { nombre:"Cancros y muerte regresiva", controles:["Caldo sulfocálcico","Caldo visosa","Mezcla: Sulfocálcico en lavado de tallos"] },
+      { nombre:"Oídio", controles:["Caldo sulfopotásico","Caldo sulfocálcico (dosis baja)","Mezcla: Sulfopotásico solo"] },
+      { nombre:"Fumagina (secundaria)", controles:["Jabón potásico","Mezcla: Jabón potásico + agua limpia"] }
+    ]
+  },
+
+  "Aguacate Papelillo": { /* igual a Hass */
+    plagas: [
+      { nombre:"Mosca del ovario (Dasiops spp.)", controles:["Caldo APICHI","Caldo M5","Extracto de tabaco","Mezcla: APICHI + Jabón potásico + Diatomeas"] },
+      { nombre:"Mosca de la fruta (Anastrepha spp.)", controles:["Extracto de tabaco","Caldo APICHI","Mezcla: Extracto de tabaco + Jabón potásico"] },
+      { nombre:"Trips", controles:["Jabón potásico","Caldo sulfopotásico","Caldo APICHI","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Ácaros (arañita roja / cristalino)", controles:["Jabón potásico","Caldo sulfopotásico","Caldo ceniza","Mezcla: Jabón potásico + Sulfopotásico"] },
+      { nombre:"Cochinillas y escamas", controles:["Jabón potásico","Caldo sulfocálcico","Caldo ceniza","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Chinches", controles:["Caldo APICHI","Caldo M5","Mezcla: M5 + Jabón potásico"] },
+      { nombre:"Barrenadores (ramas / tronco)", controles:["Caldo sulfocálcico","Caldo sulfopotásico (lavado de tallos)","Mezcla: Sulfocálcico solo (NO follaje)"] },
+      { nombre:"Nematodos", controles:["Microorganismos de Montaña (MMS líquidos y sólidos)","Pasto fermentado","Mezcla: MMS activados + Desintoxicador de suelo"] }
+    ],
+    enfermedades: [
+      { nombre:"Phytophthora (pudrición radical)", controles:["Microorganismos de Montaña","Pasto fermentado","Desintoxicador de suelo","Mezcla: MMS líquidos + Extracto de leonarditas"] },
+      { nombre:"Antracnosis (Colletotrichum)", controles:["Caldo bordelés","Caldo visosa","Caldo sulfopotásico","Mezcla: Bordelés + Diatomeas"] },
+      { nombre:"Roña / Scab", controles:["Caldo bordelés","Caldo visosa","Mezcla: Visosa solo"] },
+      { nombre:"Cancros y muerte regresiva", controles:["Caldo sulfocálcico","Caldo visosa","Mezcla: Sulfocálcico en lavado de tallos"] },
+      { nombre:"Oídio", controles:["Caldo sulfopotásico","Caldo sulfocálcico (dosis baja)","Mezcla: Sulfopotásico solo"] },
+      { nombre:"Fumagina (secundaria)", controles:["Jabón potásico","Mezcla: Jabón potásico + agua limpia"] }
+    ]
+  },
+
+  /* ===== Cítricos Tahití (completo) ===== */
+  "Limon Tahiti": {
+    plagas: [
+      { nombre:"Mosca de la fruta (Anastrepha spp.)", controles:["Extracto de tabaco","Caldo APICHI","Mezcla: Extracto de tabaco + Jabón potásico"] },
+      { nombre:"Minador de los cítricos (Phyllocnistis citrella)", controles:["Jabón potásico","Caldo APICHI","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Psílido asiático (Diaphorina citri)", controles:["Jabón potásico","Caldo APICHI","Extracto de tabaco","Mezcla: APICHI + Jabón potásico + Diatomeas"] },
+      { nombre:"Trips", controles:["Caldo sulfopotásico","Jabón potásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Ácaros (tostador / roja / blanca)", controles:["Jabón potásico","Caldo sulfopotásico","Caldo ceniza","Mezcla: Jabón potásico + Sulfopotásico"] },
+      { nombre:"Pulgones", controles:["Jabón potásico","Extracto de tabaco","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Mosca blanca", controles:["Jabón potásico","Caldo APICHI","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Cochinillas y escamas", controles:["Jabón potásico","Caldo sulfocálcico","Caldo ceniza","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Chinches (hemípteros)", controles:["Caldo APICHI","Caldo M5","Mezcla: M5 + Jabón potásico"] },
+      { nombre:"Barrenadores de ramas/tronco", controles:["Caldo sulfocálcico","Caldo sulfopotásico (lavado de tallos)","Mezcla: Sulfocálcico solo (NO follaje)"] },
+      { nombre:"Hormiga arriera", controles:["Caldo ceniza","Mezcla: Ceniza + agua (aplicación dirigida)"] },
+      { nombre:"Nematodos", controles:["Microorganismos de Montaña (MMS)","Pasto fermentado","Desintoxicador de suelo","Mezcla: MMS activados + Leonarditas"] }
+    ],
+    enfermedades: [
+      { nombre:"HLB (Greening) – manejo preventivo", controles:["Control del vector (psílido): APICHI + Jabón potásico + Diatomeas","Nutrición balanceada y monitoreo"] },
+      { nombre:"Cancrosis (Xanthomonas citri)", controles:["Caldo bordelés","Caldo visosa","Mezcla: Bordelés solo (NO mezclar con visosa)"] },
+      { nombre:"Leprosis (virus) – manejo por vector", controles:["Control del ácaro vector","Mezcla: Jabón potásico + Sulfopotásico"] },
+      { nombre:"Tristeza / Psorosis / Viroides (no curables)", controles:["Manejo preventivo","Control de vectores","Nutrición equilibrada"] },
+      { nombre:"Gomosis / Phytophthora (cuello y raíz)", controles:["Microorganismos de Montaña (MMS líquidos)","Pasto fermentado","Desintoxicador de suelo","Mezcla: MMS líquidos + Leonarditas"] },
+      { nombre:"Antracnosis (Colletotrichum)", controles:["Caldo bordelés","Caldo visosa","Mezcla: Bordelés + Diatomeas"] },
+      { nombre:"Mancha grasienta", controles:["Caldo bordelés","Caldo visosa","Mezcla: Visosa solo"] },
+      { nombre:"Melanosis", controles:["Caldo bordelés","Mezcla: Bordelés solo"] },
+      { nombre:"Sarna / Roña (Elsinoë)", controles:["Caldo bordelés","Caldo visosa","Mezcla: Visosa solo"] },
+      { nombre:"Muerte regresiva / Lasiodiplodia", controles:["Caldo sulfocálcico","Caldo visosa","Mezcla: Sulfocálcico en lavado de tallos"] },
+      { nombre:"Fumagina (secundaria)", controles:["Jabón potásico","Mezcla: Jabón potásico + agua"] }
+    ]
+  },
+
+  /* ===== Hortalizas: lechuga ===== */
+  "Lechuga": {
+    plagas: [
+      { nombre:"Pulgones (Aphids)", controles:["Jabón potásico","Extracto de tabaco","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Trips", controles:["Caldo sulfopotásico","Jabón potásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Mosca blanca", controles:["Jabón potásico","Caldo APICHI","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Minadores (Liriomyza)", controles:["Jabón potásico","Caldo APICHI","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Babosas y caracoles", controles:["Caldo ceniza (aplicación dirigida)","Diatomeas en banda seca"] }
+    ],
+    enfermedades: [
+      { nombre:"Mildiu velloso (Bremia)", controles:["Caldo bordelés","Caldo visosa","Mezcla: Bordelés solo (NO mezclar con visosa)"] },
+      { nombre:"Oídio", controles:["Caldo sulfopotásico","Mezcla: Sulfopotásico solo"] },
+      { nombre:"Botrytis (moho gris)", controles:["Caldo bordelés (preventivo)","Mejora ventilación / evitar exceso humedad"] },
+      { nombre:"Sclerotinia (pudrición blanca)", controles:["Desintoxicador de suelo","Microorganismos de Montaña (MMS)","Manejo: drenaje y aireación"] },
+      { nombre:"Damping-off (Pythium/Rhizoctonia)", controles:["Microorganismos de Montaña (MMS)","Pasto fermentado","Manejo: sustrato limpio + drenaje"] }
+    ]
+  },
+
+  /* ===== Brassicas: coliflor / repollo ===== */
+  "Coliflor": {
+    plagas: [
+      { nombre:"Polilla dorso de diamante (Plutella)", controles:["Caldo APICHI","Jabón potásico","Mezcla: APICHI + Jabón potásico + Diatomeas"] },
+      { nombre:"Orugas (Spodoptera / Pieris)", controles:["Caldo APICHI","Mezcla: APICHI + Jabón potásico + Diatomeas"] },
+      { nombre:"Pulgones", controles:["Jabón potásico","Extracto de tabaco","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Trips", controles:["Sulfopotásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Mosca blanca", controles:["Jabón potásico","Mezcla: Jabón potásico + Diatomeas"] }
+    ],
+    enfermedades: [
+      { nombre:"Hernia de la raíz (Plasmodiophora)", controles:["Manejo: pH cercano a neutro en brassicas","Desintoxicador de suelo","MMS (suelo) + MO estable"] },
+      { nombre:"Alternariosis (Alternaria)", controles:["Caldo bordelés","Caldo visosa","Mezcla: Bordelés + Diatomeas"] },
+      { nombre:"Mildiu velloso", controles:["Caldo bordelés","Mezcla: Bordelés solo"] },
+      { nombre:"Podredumbre blanda bacteriana", controles:["Caldo bordelés (preventivo)","Manejo: evitar heridas + exceso humedad"] },
+      { nombre:"Oídio", controles:["Caldo sulfopotásico","Mezcla: Sulfopotásico solo"] }
+    ]
+  },
+
+  "Repollo": {
+    plagas: [
+      { nombre:"Polilla dorso de diamante (Plutella)", controles:["Caldo APICHI","Mezcla: APICHI + Jabón potásico + Diatomeas"] },
+      { nombre:"Orugas (Spodoptera / Pieris)", controles:["Caldo APICHI","Mezcla: APICHI + Jabón potásico + Diatomeas"] },
+      { nombre:"Pulgones", controles:["Jabón potásico","Extracto de tabaco","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Trips", controles:["Sulfopotásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Babosas y caracoles", controles:["Caldo ceniza (aplicación dirigida)","Diatomeas en banda seca"] }
+    ],
+    enfermedades: [
+      { nombre:"Hernia de la raíz (Plasmodiophora)", controles:["Manejo: pH cercano a neutro en brassicas","Desintoxicador de suelo","MMS (suelo) + MO estable"] },
+      { nombre:"Alternariosis (Alternaria)", controles:["Caldo bordelés","Caldo visosa","Mezcla: Bordelés + Diatomeas"] },
+      { nombre:"Mildiu velloso", controles:["Caldo bordelés","Mezcla: Bordelés solo"] },
+      { nombre:"Podredumbre blanda bacteriana", controles:["Caldo bordelés (preventivo)","Manejo: evitar heridas + exceso humedad"] },
+      { nombre:"Mancha bacteriana", controles:["Caldo bordelés (preventivo)","Manejo: higiene + rotación"] }
+    ]
+  },
+
+  /* ===== Mora de Castilla ===== */
+  "Mora de Castilla": {
+    plagas: [
+      { nombre:"Trips", controles:["Sulfopotásico","Jabón potásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Ácaros", controles:["Jabón potásico","Sulfopotásico","Mezcla: Jabón potásico + Sulfopotásico"] },
+      { nombre:"Pulgones", controles:["Jabón potásico","Extracto de tabaco","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Mosca blanca", controles:["Jabón potásico","Mezcla: Jabón potásico + Diatomeas"] }
+    ],
+    enfermedades: [
+      { nombre:"Antracnosis", controles:["Caldo bordelés","Caldo visosa","Mezcla: Bordelés + Diatomeas"] },
+      { nombre:"Oídio", controles:["Caldo sulfopotásico","Mezcla: Sulfopotásico solo"] },
+      { nombre:"Botrytis (moho gris)", controles:["Caldo bordelés (preventivo)","Manejo: aireación + poda sanitaria"] },
+      { nombre:"Royas", controles:["Caldo bordelés","Mezcla: Bordelés solo"] }
+    ]
+  },
+
+  /* ===== Tomate (ampliado) ===== */
+  "Tomate": {
+    plagas: [
+      { nombre:"Mosca blanca", controles:["Jabón potásico","Mezcla: Jabón potásico + Diatomeas","Caldo APICHI (apoyo)"] },
+      { nombre:"Trips", controles:["Sulfopotásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Ácaros", controles:["Jabón potásico","Sulfopotásico","Mezcla: Jabón potásico + Sulfopotásico"] },
+      { nombre:"Minador", controles:["Jabón potásico","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Orugas (Spodoptera/Helicoverpa)", controles:["Caldo APICHI","Mezcla: APICHI + Jabón potásico + Diatomeas"] }
+    ],
+    enfermedades: [
+      { nombre:"Mildiu", controles:["Caldo bordelés","Mezcla: Bordelés solo"] },
+      { nombre:"Alternaria (tizón temprano)", controles:["Caldo bordelés","Caldo visosa","Mezcla: Bordelés + Diatomeas"] },
+      { nombre:"Tizón tardío (Phytophthora infestans)", controles:["Caldo bordelés (preventivo)","Manejo: ventilación + evitar mojado prolongado"] },
+      { nombre:"Oídio", controles:["Caldo sulfopotásico","Mezcla: Sulfopotásico solo"] },
+      { nombre:"Bacteriosis (manchas)", controles:["Caldo bordelés (preventivo)","Manejo: higiene + evitar heridas"] }
+    ]
+  },
+
+  /* ===== Pitahaya ===== */
+  "Pitahaya": {
+    plagas: [
+      { nombre:"Cochinillas", controles:["Jabón potásico","Mezcla: Jabón potásico + Diatomeas","Caldo sulfocálcico (tallos, dosis baja)"] },
+      { nombre:"Trips", controles:["Sulfopotásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Ácaros", controles:["Jabón potásico","Sulfopotásico","Mezcla: Jabón potásico + Sulfopotásico"] }
+    ],
+    enfermedades: [
+      { nombre:"Antracnosis", controles:["Caldo bordelés","Mezcla: Bordelés + Diatomeas"] },
+      { nombre:"Manchas (bacterianas/fúngicas)", controles:["Caldo bordelés (preventivo)","Manejo: podas + ventilación"] },
+      { nombre:"Pudriciones por exceso de humedad", controles:["MMS (suelo)","Desintoxicador de suelo","Manejo: drenaje"] }
+    ]
+  },
+
+  /* ===== Gulupa ===== */
+  "Gulupa": {
+    plagas: [
+      { nombre:"Trips", controles:["Sulfopotásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Ácaros", controles:["Jabón potásico","Sulfopotásico","Mezcla: Jabón potásico + Sulfopotásico"] },
+      { nombre:"Pulgones", controles:["Jabón potásico","Extracto de tabaco","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Mosca blanca", controles:["Jabón potásico","Mezcla: Jabón potásico + Diatomeas"] }
+    ],
+    enfermedades: [
+      { nombre:"Antracnosis", controles:["Caldo bordelés","Caldo visosa","Mezcla: Bordelés + Diatomeas"] },
+      { nombre:"Oídio", controles:["Caldo sulfopotásico","Mezcla: Sulfopotásico solo"] },
+      { nombre:"Fusarium (marchitez) – manejo suelo", controles:["MMS (suelo)","Pasto fermentado","Desintoxicador de suelo","Mezcla: MMS + Leonarditas"] }
+    ]
+  },
+
+  /* ===== Guayaba (sanidad base) ===== */
+  "Guayaba": {
+    plagas: [
+      { nombre:"Mosca de la fruta", controles:["Extracto de tabaco","Caldo APICHI","Mezcla: Extracto de tabaco + Jabón potásico"] },
+      { nombre:"Trips", controles:["Sulfopotásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Escamas y cochinillas", controles:["Jabón potásico","Mezcla: Jabón potásico + Diatomeas","Sulfocálcico (tallos, no flor)"] }
+    ],
+    enfermedades: [
+      { nombre:"Antracnosis", controles:["Caldo bordelés","Mezcla: Bordelés + Diatomeas"] },
+      { nombre:"Manchas foliares", controles:["Caldo bordelés","Caldo visosa","Mezcla: Visosa solo o Bordelés solo (no mezclar)"] }
+    ]
+  },
+
+  /* ===== Guanábana (sanidad base) ===== */
+  "Guanabana": {
+    plagas: [
+      { nombre:"Trips", controles:["Sulfopotásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Cochinillas", controles:["Jabón potásico","Mezcla: Jabón potásico + Diatomeas"] },
+      { nombre:"Ácaros", controles:["Jabón potásico","Sulfopotásico","Mezcla: Jabón potásico + Sulfopotásico"] }
+    ],
+    enfermedades: [
+      { nombre:"Antracnosis", controles:["Caldo bordelés","Mezcla: Bordelés + Diatomeas"] },
+      { nombre:"Pudriciones de raíz – manejo suelo", controles:["MMS (suelo)","Pasto fermentado","Desintoxicador de suelo","Mezcla: MMS + Leonarditas"] }
+    ]
+  },
+
+  /* ===== Banano / Plátano (separado) ===== */
+  "Banano": {
+    plagas: [
+      { nombre:"Picudo negro", controles:["Jabón potásico + diatomeas","Manejo: trampas/cebos + residuos"] },
+      { nombre:"Trips", controles:["Sulfopotásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Ácaros", controles:["Jabón potásico","Mezcla: Jabón potásico + Sulfopotásico"] }
+    ],
+    enfermedades: [
+      { nombre:"Sigatoka negra", controles:["Sulfopotásico + diatomeas","Caldo bordelés (preventivo)","Manejo: deshoje sanitario"] },
+      { nombre:"Moko (Ralstonia) – manejo integrado", controles:["Manejo: erradicación + bioseguridad","MMS (suelo) + Desintoxicador de suelo (apoyo suelo)"] },
+      { nombre:"Fusarium (manejo suelo)", controles:["MMS (suelo)","Pasto fermentado","Desintoxicador de suelo","Mezcla: MMS + Leonarditas"] }
+    ]
+  },
+
+  "Platano": {
+    plagas: [
+      { nombre:"Picudo negro", controles:["Jabón potásico + diatomeas","Manejo: trampas/cebos + residuos"] },
+      { nombre:"Trips", controles:["Sulfopotásico","Mezcla: Sulfopotásico + Diatomeas"] },
+      { nombre:"Ácaros", controles:["Jabón potásico","Mezcla: Jabón potásico + Sulfopotásico"] }
+    ],
+    enfermedades: [
+      { nombre:"Sigatoka negra", controles:["Sulfopotásico + diatomeas","Caldo bordelés (preventivo)","Manejo: deshoje sanitario"] },
+      { nombre:"Moko (Ralstonia) – manejo integrado", controles:["Manejo: erradicación + bioseguridad","MMS (suelo) + Desintoxicador de suelo (apoyo suelo)"] },
+      { nombre:"Fusarium (manejo suelo)", controles:["MMS (suelo)","Pasto fermentado","Desintoxicador de suelo","Mezcla: MMS + Leonarditas"] }
+    ]
+  },
+
+  /* ===== Pastos ===== */
+  "Pasto estrella (Star grass)": {
+    plagas: [
+      { nombre:"Salivazo", controles:["Caldo APICHI","Mezcla: APICHI + Jabón potásico + Diatomeas"] },
+      { nombre:"Trips", controles:["Sulfopotásico","Mezcla: Sulfopotásico + Diatomeas"] }
+    ],
+    enfermedades: [
+      { nombre:"Manchas foliares", controles:["Caldo bordelés (preventivo)","Manejo: aireación + no exceso humedad"] }
+    ]
+  },
+  "Kikuyo": {
+    plagas: [
+      { nombre:"Salivazo", controles:["Caldo APICHI","Mezcla: APICHI + Jabón potásico + Diatomeas"] }
+    ],
+    enfermedades: [
+      { nombre:"Manchas foliares", controles:["Caldo bordelés (preventivo)","Manejo: aireación + no exceso humedad"] }
+    ]
+  }
+};
+
+/* ====== Carga/mezcla de sanidad guardada en navegador ====== */
+const LS_KEY = "hat3_sanidad_custom_v1";
+function deepClone(o){ return JSON.parse(JSON.stringify(o||{})); }
+function normalize(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim(); }
+
+function loadCustomSanidad(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    return raw ? JSON.parse(raw) : {};
+  }catch(_){ return {}; }
+}
+function saveCustomSanidad(obj){
+  localStorage.setItem(LS_KEY, JSON.stringify(obj||{}));
+}
+function mergeSanidad(base, custom){
+  const out = deepClone(base);
+  Object.keys(custom||{}).forEach(crop=>{
+    out[crop] = out[crop] || {plagas:[], enfermedades:[]};
+    ["plagas","enfermedades"].forEach(kind=>{
+      const arr = (custom[crop] && custom[crop][kind]) ? custom[crop][kind] : [];
+      arr.forEach(item=>{
+        const exists = (out[crop][kind]||[]).some(x => normalize(x.nombre) === normalize(item.nombre));
+        if(!exists) out[crop][kind].push(item);
+      });
+    });
+  });
+  return out;
+}
+
+let SANIDAD = {}; // se llena en start()
+
+/* =====================
+   UI helpers
+   ===================== */
+function fillSelect(selectEl,obj){
+  selectEl.innerHTML='';
+  Object.keys(obj).forEach(k=>{
+    const o=document.createElement('option');
+    o.value=k; o.textContent=k;
+    selectEl.appendChild(o);
+  });
+}
+function adjust(range,f){
+  if(!range || !Array.isArray(range) || range.length!==2) return null;
+  const [a,b]=range;
+  const A=a*f, B=b*f;
+  const round=(x)=> (Math.abs(x)>=100 ? Math.round(x) : Math.round(x*10)/10);
+  return [round(A),round(B)];
+}
+function nivel(v,range){
+  if(range==null) return {code:'',txt:'',cls:''};
+  if(isNaN(v)) return {code:'',txt:'',cls:''};
+  const [a,b]=range;
+  const d=b-a;
+  if(d<=0) return {code:'',txt:'',cls:''};
+  const t=(v-a)/d;
+  if(t<-0.5) return {code:'VB',txt:'Muy bajo',cls:'lvl-vb'};
+  if(t<0)    return {code:'B', txt:'Bajo',cls:'lvl-b'};
+  if(t<0.25) return {code:'MB',txt:'Medio bajo',cls:'lvl-mb'};
+  if(t<=0.75)return {code:'M', txt:'Óptimo',cls:'lvl-m'};
+  if(t<=1)   return {code:'MA',txt:'Medio alto',cls:'lvl-ma'};
+  if(t<=1.5) return {code:'A', txt:'Alto',cls:'lvl-a'};
+  return {code:'VA',txt:'Muy alto',cls:'lvl-va'};
+}
+function dirFromValue(v, range){
+  if(range==null || isNaN(v)) return null;
+  if(v < range[0]) return 'low';
+  if(v > range[1]) return 'high';
+  return 'ok';
+}
+function recomendaciones(key, v, range){
+  const dir = dirFromValue(v, range);
+  if(dir===null) return '';
+  if(dir==='ok') return '';
+  const rec = {
+    pH:{
+      low:'pH bajo: cobertura + MO estable; húmicos/fúlvicos + consorcio microbiano. Enmienda gradual si aplica.',
+      high:'pH alto: evitar carbonatos; acidificar con azufre/ácidos orgánicos y subir MO.'
+    },
+    EC:{
+      low:'CE baja: nutrición fraccionada (biol/supermagro dosis bajas) + activar microbiología.',
+      high:'CE alta: fraccionar riegos/lavados, evitar cloruros, humatos + MO coloidal, mejorar drenaje.'
+    },
+    HUM:{
+      low:'Humedad baja: mulch/coberturas, subir MO, riego por pulsos.',
+      high:'Humedad alta: drenaje y macroporosidad, evitar exceso de N.'
+    },
+    N:{
+      low:'N bajo: bioles/fermentos en fracciones; acompañar con S y Mo.',
+      high:'N alto: bajar N; reforzar Ca/B/Si.'
+    },
+    P:{
+      low:'P bajo: activar con húmicos/fúlvicos + solubilizadores; micorrizas si aplica.',
+      high:'P alto: suspender P; subir MO; reforzar Zn/Fe.'
+    },
+    K:{
+      low:'K bajo: sulfopotasico/humatos K; fraccionar y cuidar Ca-Mg.',
+      high:'K alto: moderar K; reforzar Ca/Mg/B.'
+    }
+  };
+  return rec[key] ? rec[key][dir] : '';
+}
+function buildRanges(cult,fase){
+  const f=FASES[fase];
+  return {
+    pH: cult.pH ?? null,
+    EC: cult.EC ? adjust(cult.EC,f.EC) : null,
+    HUM: cult.HUM ?? null,
+    N:  cult.N  ? adjust(cult.N,f.N)  : null,
+    P:  cult.P  ? adjust(cult.P,f.P)  : null,
+    K:  cult.K  ? adjust(cult.K,f.K)  : null
+  };
+}
+
+/* =====================
+   Sanidad por cultivo
+   ===================== */
+let sanItems = []; // {tipo, nombre, controles[]}
+
+function getSanidadArr(cropName, tipo){
+  const s = SANIDAD[cropName];
+  if(!s) return [];
+  return (tipo==='plaga') ? (s.plagas||[]) : (s.enfermedades||[]);
+}
+function findControles(cropName, tipo, nombre){
+  const list = getSanidadArr(cropName, tipo);
+  const n = normalize(nombre);
+
+  const exact = list.find(x => normalize(x.nombre) === n);
+  if(exact) return exact.controles || [];
+
+  const contains = list.find(x => normalize(x.nombre).includes(n) || n.includes(normalize(x.nombre)));
+  if(contains) return contains.controles || [];
+
+  return [];
+}
+function setSanSelectOptions(){
+  const crop = $('crop').value;
+  const tipo = $('sanTipo').value;
+  const sel = $('sanSelect');
+
+  const list = getSanidadArr(crop, tipo).map(x=>x.nombre).sort((a,b)=>a.localeCompare(b,'es'));
+  sel.innerHTML='';
+  const op0=document.createElement('option');
+  op0.value=''; op0.textContent = list.length ? '— Selecciona —' : '— No hay datos cargados —';
+  sel.appendChild(op0);
+
+  list.forEach(name=>{
+    const o=document.createElement('option');
+    o.value=name; o.textContent=name;
+    sel.appendChild(o);
+  });
+
+  $('sanCropName').textContent = crop;
+  const chipsBox = $('sanChips');
+  chipsBox.innerHTML = '';
+  list.slice(0,12).forEach(name=>{
+    const sp=document.createElement('span');
+    sp.className='tag';
+    sp.textContent=name;
+    sp.title='Clic para cargar';
+    sp.addEventListener('click', ()=>{
+      sel.value = name;
+      loadSelectedToControls();
+    });
+    chipsBox.appendChild(sp);
+  });
+}
+function loadSelectedToControls(){
+  const crop = $('crop').value;
+  const tipo = $('sanTipo').value;
+  const name = $('sanSelect').value;
+  if(!name) return;
+
+  const ctrls = findControles(crop, tipo, name);
+  $('sanNuevo').value = '';
+  $('sanControles').value = (ctrls||[]).join('\n');
+}
+function renderSanTable(){
+  const tb = $('sanTableBody');
+  tb.innerHTML = '';
+
+  if(sanItems.length===0){
+    const tr=document.createElement('tr');
+    tr.innerHTML = `<td colspan="4" class="muted" style="padding:12px">No hay items agregados.</td>`;
+    tb.appendChild(tr);
+    $('sanResumen').innerHTML='';
+    return;
+  }
+
+  sanItems.forEach((it, idx)=>{
+    const tr=document.createElement('tr');
+    const chips = (it.controles && it.controles.length)
+      ? it.controles.map(c=>`<span class="tag" style="cursor:default">${c}</span>`).join('')
+      : `<span class="muted">Sin controles</span>`;
+
+    tr.innerHTML = `
+      <td><span class="typeChip">${it.tipo}</span></td>
+      <td><b>${it.nombre}</b></td>
+      <td>${chips}</td>
+      <td><button class="secondary" type="button" data-del="${idx}">Quitar</button></td>
+    `;
+    tb.appendChild(tr);
+  });
+
+  tb.querySelectorAll('button[data-del]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const i = +btn.getAttribute('data-del');
+      sanItems.splice(i,1);
+      renderSanTable();
+    });
+  });
+
+  const set = new Set();
+  sanItems.forEach(it => (it.controles||[]).forEach(c=>set.add(c)));
+  $('sanResumen').innerHTML = Array.from(set).map(c=>`<span class="tag" style="cursor:default">${c}</span>`).join(' ');
+}
+
+function addSanItem(){
+  const tipo = $('sanTipo').value;
+  const nuevo = ($('sanNuevo').value||'').trim();
+  const seleccionado = ($('sanSelect').value||'').trim();
+  const nombre = nuevo || seleccionado;
+  if(!nombre) return;
+
+  const ctrlsText = ($('sanControles').value||'').trim();
+  const ctrls = ctrlsText ? ctrlsText.split('\n').map(x=>x.trim()).filter(Boolean) : [];
+
+  sanItems.push({ tipo, nombre, controles: ctrls });
+
+  $('sanNuevo').value = '';
+  renderSanTable();
+}
+
+function saveToBrowser(){
+  const crop = $('crop').value;
+  const tipo = $('sanTipo').value;
+
+  const nuevo = ($('sanNuevo').value||'').trim();
+  const seleccionado = ($('sanSelect').value||'').trim();
+  const nombre = nuevo || seleccionado;
+  if(!nombre) return;
+
+  const ctrlsText = ($('sanControles').value||'').trim();
+  const ctrls = ctrlsText ? ctrlsText.split('\n').map(x=>x.trim()).filter(Boolean) : [];
+
+  const custom = loadCustomSanidad();
+  custom[crop] = custom[crop] || {plagas:[], enfermedades:[]};
+  const key = (tipo==='plaga') ? 'plagas' : 'enfermedades';
+
+  const exists = (custom[crop][key]||[]).some(x => normalize(x.nombre) === normalize(nombre));
+  if(!exists){
+    custom[crop][key].push({nombre, controles: ctrls});
+  }else{
+    custom[crop][key] = (custom[crop][key]||[]).map(x => {
+      if(normalize(x.nombre) === normalize(nombre)) return {nombre, controles: ctrls};
+      return x;
+    });
+  }
+
+  saveCustomSanidad(custom);
+  SANIDAD = mergeSanidad(SANIDAD_BASE, custom);
+
+  setSanSelectOptions();
+  $('sanSelect').value = nombre;
+  $('sanNuevo').value = '';
+  $('sanControles').value = (ctrls||[]).join('\n');
+  dbg('sanidad guardada');
+}
+
+/* =====================
+   Evaluación suelo
+   ===================== */
+function evaluate(){
+  try{
+    const cult=CULTIVOS[$('crop').value] || {};
+    const fase=$('fase').value;
+    const R=buildRanges(cult,fase);
+
+    const V={
+      pH:+$('pH').value,
+      EC:+$('ec').value,
+      HUM:+$('hum').value,
+      N:+$('n').value,
+      P:+$('p').value,
+      K:+$('k').value,
+      T:+$('t').value
+    };
+
+    const kpi=$('kpi'); kpi.innerHTML='';
+    [['Cultivo',$('crop').value],['Fase',fase],['Temp',isNaN(V.T)?'':V.T+' °C']].forEach(x=>{
+      const d=document.createElement('div');
+      d.className='badge';
+      d.textContent=x[0]+': '+x[1];
+      kpi.appendChild(d);
+    });
+
+    const chips=$('chips'); chips.innerHTML='';
+    const orden=['pH','EC','HUM','N','P','K'];
+    orden.forEach(k=>{
+      if(R[k]==null) return;
+      const lv=nivel(V[k],R[k]);
+      if(!lv.code) return;
+      const s=document.createElement('span');
+      s.className='pill '+lv.cls;
+      s.textContent=`${k}: ${lv.txt} (ideal ${R[k][0]}–${R[k][1]})`;
+      chips.appendChild(s);
+    });
+
+    const rec=[];
+    orden.forEach(k=>{
+      if(R[k]==null) return;
+      const txt = recomendaciones(k, V[k], R[k]);
+      if(txt) rec.push(`• ${k}: ${txt}`);
+    });
+
+    if(!isNaN(V.T)){
+      if(V.T>32) rec.push('• Temperatura: >32 °C → estrés térmico; riegos tempranos, sombreo y mulch.');
+      if(V.T<16) rec.push('• Temperatura: <16 °C → metabolismo lento; evita sobrefertilizar.');
+    }
+
+    const anyRange = orden.some(k=>R[k]!=null);
+    $('rec').textContent = anyRange
+      ? (rec.length ? rec.join('\n') : 'Todos los parámetros evaluados están en rango. Mantener manejo y seguimiento.')
+      : 'Este cultivo no tiene rangos cargados.';
+
+    dbg('ok');
+  }catch(e){
+    dbg('error: '+e.message);
+  }
+}
+
+function clearAll(){
+  ['pH','ec','hum','n','p','k','t'].forEach(id=>{$(id).value=''});
+  $('kpi').innerHTML='';
+  $('chips').innerHTML='';
+  $('rec').textContent='';
+  dbg('clear');
+}
+
+function exportCSV(){
+  const row={
+    fecha:new Date().toISOString(),
+    cultivo:$('crop').value,
+    fase:$('fase').value,
+    pH:$('pH').value,
+    CE:$('ec').value,
+    Hum:$('hum').value,
+    N:$('n').value,
+    P:$('p').value,
+    K:$('k').value,
+    Temp:$('t').value
+  };
+  const csv=Object.keys(row).join(',')+'\n'+Object.values(row).join(',');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download='lectura_halisense.csv';
+  a.click();
+  dbg('csv');
+}
+
+function start(){
+  lockInit();
+
+  fillSelect($('crop'),CULTIVOS);
+  fillSelect($('fase'),FASES);
+
+  $('evaluate').addEventListener('click', evaluate);
+  $('clear').addEventListener('click', clearAll);
+  $('export').addEventListener('click', exportCSV);
+  $('print').addEventListener('click', ()=>window.print());
+
+  SANIDAD = mergeSanidad(SANIDAD_BASE, loadCustomSanidad());
+
+  $('sanTipo').addEventListener('change', ()=>{
+    setSanSelectOptions();
+    $('sanSelect').value='';
+    $('sanControles').value='';
+    $('sanNuevo').value='';
+  });
+
+  $('sanSelect').addEventListener('change', loadSelectedToControls);
+
+  $('crop').addEventListener('change', ()=>{
+    setSanSelectOptions();
+    sanItems = [];
+    renderSanTable();
+    $('sanSelect').value='';
+    $('sanControles').value='';
+    $('sanNuevo').value='';
+  });
+
+  $('sanAdd').addEventListener('click', addSanItem);
+  $('sanClear').addEventListener('click', ()=>{
+    sanItems = [];
+    renderSanTable();
+  });
+  $('sanSave').addEventListener('click', saveToBrowser);
+
+  setSanSelectOptions();
+  renderSanTable();
+
+  dbg('ready');
+}
+
+if(document.readyState!=='loading') start();
+else document.addEventListener('DOMContentLoaded', start);
+</script>
+
+</body>
+</html>

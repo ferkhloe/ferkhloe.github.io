@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cotizar Bioinsumos y Equipos | Ferkhloe</title>
+  <meta name="description" content="Arma tu cotización de bioinsumos, sulfatos, equipos de medición e insumos agrícolas y envíala por WhatsApp o correo directamente a Ferkhloe."/>
+
+  <!-- IMPORTANTE: reemplaza https://www.ferkhloe.com por el dominio real una vez publicada la página -->
+  <link rel="canonical" href="https://www.ferkhloe.com/cotizaciones.html">
+  <link rel="icon" href="https://ferkhloe.webcindario.com/logo%20ferkhloe.png" type="image/png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cotizar Bioinsumos y Equipos | Ferkhloe">
+  <meta property="og:description" content="Arma tu cotización de bioinsumos, sulfatos, equipos de medición e insumos agrícolas y envíala por WhatsApp o correo directamente a Ferkhloe.">
+  <meta property="og:image" content="https://ferkhloe.webcindario.com/logo%20ferkhloe.png">
+  <meta property="og:url" content="https://www.ferkhloe.com/cotizaciones.html">
+  <meta property="og:locale" content="es_CO">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cotizar Bioinsumos y Equipos | Ferkhloe">
+  <meta name="twitter:description" content="Arma tu cotización de bioinsumos, sulfatos, equipos de medición e insumos agrícolas y envíala por WhatsApp o correo directamente a Ferkhloe.">
+  <meta name="twitter:image" content="https://ferkhloe.webcindario.com/logo%20ferkhloe.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    :root{--green:#156a42;--green-600:#0f5a37;--green-100:#e8f6f0;--accent:#7bd389;--ink:#0f172a;--muted:#5b6475}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1f2937;background:#fff}
+    a{color:inherit;text-decoration:none}
+
+    /* ===== Header / Navbar ===== */
+    header{position:sticky;top:0;z-index:60;background:#ffffffd9;backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #eef2f7}
+    .container{max-width:1180px;margin:0 auto;padding:0 20px}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800;color:var(--green)}
+    .logo{width:42px;height:42px;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff}
+    .logo img{width:100%;height:100%;object-fit:contain}
+    .menu{display:flex;gap:18px;font-weight:700;color:#334155}
+    .menu a{padding:8px 10px;border-radius:10px}
+    .menu a:hover{background:#f3faf6}
+    .hamb{display:none;background:transparent;border:0;font-size:22px}
+
+    /* ===== Hero ===== */
+    .hero{position:relative}
+    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1200px 550px at 80% -10%,var(--accent),transparent),linear-gradient(180deg,#f7fffb,transparent 60%);z-index:-1}
+    .hero .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:center;padding:62px 0 42px}
+    .hero-logo-box{display:flex;flex-direction:column;align-items:center;gap:16px}
+    .hero-logo{width:260px;max-width:100%;border-radius:18px;background:#fff;padding:8px;box-shadow:0 18px 50px rgba(15,90,55,.22)}
+    .hero-logo img{width:100%;height:auto;display:block;object-fit:contain}
+    .badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-100);color:var(--green);padding:7px 12px;border-radius:999px;font-weight:800;font-size:12px}
+    h1{font-size:34px;line-height:1.2;margin:10px 0 12px;color:var(--ink)}
+    p.lead{font-size:16px;color:#475569;max-width:60ch}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:700;background:var(--green);color:#fff;box-shadow:0 6px 18px rgba(21,106,66,0.25);border:0;cursor:pointer}
+    .btn.outline{background:#fff;color:var(--green);border:2px solid var(--green);box-shadow:none}
+    .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+    /* ===== Sections ===== */
+    section{padding:56px 0}
+    h2{font-size:30px;margin:0 0 14px;color:var(--ink)}
+    .sub{color:#64748b;margin:0 0 24px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{padding:20px;border:1px solid #eef2f7;border-radius:18px;box-shadow:0 10px 30px rgba(17,24,39,.06);background:#fff}
+    .card h3{margin:8px 0 6px;color:#0f172a}
+    .icon{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:var(--green-100);color:var(--green)}
+    .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center}
+    .chip{display:inline-block;background:#eef8f1;color:var(--green);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .gallery img{width:100%;border-radius:14px;aspect-ratio:16/10;object-fit:cover;cursor:pointer;transition:transform .15s}
+    .gallery img:hover{transform:scale(1.02)}
+    .list{display:grid;gap:10px;color:#4b5563}
+    .list li{display:flex;gap:10px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+    /* ===== Cotización – cuadritos de productos ===== */
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:18px;max-height: 500px;overflow-y: auto;padding-right: 5px;}
+    .product-grid::-webkit-scrollbar {width: 8px;}
+    .product-grid::-webkit-scrollbar-thumb {background: #cbd5e1; border-radius: 4px;}
+    .prod-card{border-radius:14px;border:1px solid #e5e7eb;padding:12px;background:#f9fafb;display:flex;flex-direction:column;gap:6px;font-size:13px;}
+    .prod-card h4{margin:0;font-size:14px;color:#0f172a}
+    .prod-card .price{font-weight:700;color:var(--green-600);font-size:13px}
+    .prod-card input{width:100%;padding:6px;border-radius:8px;border:1px solid #d1d5db;font-size:12px}
+    .prod-card button{margin-top:4px;padding:6px 10px;border-radius:999px;border:0;background:var(--green);color:#fff;font-weight:600;font-size:12px;cursor:pointer}
+
+    /* ===== Protocolos HAT 3 # ===== */
+    .protocolo-card{background:#fff;border:1px solid #eef2f7;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);margin-bottom:20px;overflow:hidden;font-family:'Inter',sans-serif;}
+    .protocolo-header{background:#156a42;color:#fff;padding:15px 20px;cursor:pointer;font-weight:bold;font-size:1.1em;display:flex;justify-content:space-between;align-items:center;}
+    .protocolo-content{padding:20px;display:none;}
+    .protocolo-header img {height:35px; background:#fff; padding:3px; border-radius:6px; object-fit:contain;}
+
+    /* ===== Herramientas con PIN ===== */
+    .tool-locked{padding:16px;border-radius:16px;border:1px solid #e5e7eb;background:#fff;overflow:hidden;}
+    .tool-preview{position:relative;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;background:#0b1220;}
+    .tool-preview img{width:100%;height:220px;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.05);}
+    .tool-badge{position:absolute;top:12px; left:12px;background:rgba(15,23,42,.65);color:#fff;padding:8px 12px;border-radius:999px;font-weight:800;font-size:12px;border:1px solid rgba(255,255,255,.18);backdrop-filter: blur(6px);}
+    .tool-actions{display:flex;justify-content:flex-end;gap:10px;padding:12px 0 0;}
+    .tool-actions button{padding:10px 16px;border-radius:999px;border:0;background:var(--green);color:#fff;font-weight:700;cursor:pointer;}
+
+    /* ===== PIN modal ===== */
+    #pin-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,0.55);z-index:80}
+    #pin-modal .box{background:#fff;padding:22px 20px;border-radius:18px;max-width:320px;width:90%;box-shadow:0 18px 45px rgba(15,23,42,.35);text-align:center}
+    #pin-modal input{width:100%;padding:10px;border-radius:10px;border:1px solid #e5e7eb;font-size:16px;text-align:center;letter-spacing:0.3em}
+    #pin-modal .actions{margin-top:14px;display:flex;gap:10px;justify-content:center}
+    #pin-modal button{padding:8px 14px;border-radius:999px;border:0;cursor:pointer;font-weight:600}
+    #pin-modal .btn-cancel{background:#e5e7eb;color:#111827}
+    #pin-modal .btn-ok{background:var(--green);color:#fff}
+
+    /* ===== Lightbox Galería ===== */
+    #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:90;cursor:pointer}
+    #lightbox img{max-width:90%;max-height:90%;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+
+    /* ===== Footer ===== */
+    footer{background:#0c412b;color:#e2e8f0;margin-top:40px}
+    footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px;padding:36px 0}
+    footer a{color:#cde9db}
+    .bottom{border-top:1px solid #1b5a43;padding:14px 0;color:#9fb7aa;font-size:14px}
+
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .hero .wrap,.two-col,.grid-3,.grid-4,footer .cols{grid-template-columns:1fr}
+      h1{font-size:28px}
+      .menu{display:none;position:absolute;top:62px;right:20px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;flex-direction:column;gap:0;overflow:hidden}
+      .menu a{padding:12px 16px;border-bottom:1px solid #eef2f7}
+      .menu a:last-child{border-bottom:0}
+      .hamb{display:block}
+    }
+  
+
+/* ===== Multipágina: estado activo del menú y tarjetas de acceso rápido ===== */
+.menu a.active{color:var(--green);background:#eef8f1}
+.quick-icon{font-size:26px;line-height:1}
+
+  </style>
+
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="index.html" aria-label="Ferkhloe — Inicio">
+          <span class="logo">
+            <img src="https://ferkhloe.webcindario.com/logo%20ferkhloe.png" alt="Ferkhloe">
+          </span>
+          <span>Ferkhloe</span>
+        </a>
+        <button class="hamb" id="hamb" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
+        <div class="menu" id="menu">
+          <a href="protocolos.html">Protocolos HAT</a>
+          <a href="herramientas.html">Herramientas</a>
+          <a href="cotizaciones.html" class="active" aria-current="page">Cotizaciones</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+<section id="cotizaciones" style="background:#f4f9f6">
+    <div class="container two-col">
+      <div>
+        <h1>Cotizaciones</h1>
+        <p class="sub">Agrega productos al carrito y envía la cotización a Ferkhloe.</p>
+
+        <div class="card">
+          <form onsubmit="event.preventDefault();">
+            <div class="split">
+              <div>
+                <label for="nombre" style="font-size:14px;color:#4b5563;">Nombre completo</label>
+                <input id="nombre" name="nombre" required placeholder="Nombre" style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
+              </div>
+              <div>
+                <label for="telefono" style="font-size:14px;color:#4b5563;">Teléfono / WhatsApp</label>
+                <input id="telefono" name="telefono" type="tel" required placeholder="Ej: 313 774 4450" style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
+              </div>
+            </div>
+
+            <div style="margin-top:12px;">
+              <label for="ubicacion" style="font-size:14px;color:#4b5563;">Municipio / Departamento</label>
+              <input id="ubicacion" name="ubicacion" placeholder="Ej: Calarcá, Quindío" style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
+            </div>
+
+            <div class="split" style="margin-top:16px;">
+              <div>
+                <label for="producto" style="font-size:14px;color:#4b5563;">Producto</label>
+                <select id="producto" name="producto" onchange="actualizarLabelCantidad()" style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
+                </select>
+              </div>
+              <div>
+                <label for="cantidad" id="label-cantidad" style="font-size:14px;color:#4b5563;">Cantidad</label>
+                <input id="cantidad" name="cantidad" type="number" min="1" value="1" style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
+              </div>
+            </div>
+
+            <div style="margin-top:12px;display:flex;align-items:flex-start;gap:8px;">
+              <input type="checkbox" id="acepto-datos" required style="margin-top:4px;">
+              <label for="acepto-datos" style="font-size:13px;color:#6b7280;">
+                Autorizo a Ferkhloe a contactarme y tratar mis datos personales para responder esta solicitud de cotización.
+                <!-- TODO: enlazar aquí a la política de tratamiento de datos real cuando exista -->
+              </label>
+            </div>
+
+            <div style="margin-top:14px;">
+              <button type="button" class="btn" onclick="agregarAlCarrito()">Agregar al carrito</button>
+            </div>
+          </form>
+
+          <h3 style="margin-top:22px;margin-bottom:6px;">Agregar rápido</h3>
+          <p style="margin:0 0 8px;font-size:13px;color:#6b7280;">Desliza para ver todos los productos. Elige cantidad y presiona “Añadir al carrito”.</p>
+          
+          <div class="product-grid" id="grid-productos-rapidos"></div>
+
+          <div style="margin-top:24px;">
+            <h3 style="margin:0 0 10px;">Carrito de cotización</h3>
+            <div style="overflow-x:auto;">
+              <table style="width:100%;border-collapse:collapse;font-size:14px;">
+                <thead>
+                  <tr style="background:#f1f5f9;">
+                    <th style="text-align:left;padding:8px;border-bottom:1px solid #e5e7eb;">Producto</th>
+                    <th style="text-align:right;padding:8px;border-bottom:1px solid #e5e7eb;">Cantidad</th>
+                    <th style="text-align:right;padding:8px;border-bottom:1px solid #e5e7eb;">P. unitario</th>
+                    <th style="text-align:right;padding:8px;border-bottom:1px solid #e5e7eb;">Subtotal</th>
+                    <th style="text-align:center;padding:8px;border-bottom:1px solid #e5e7eb;">Quitar</th>
+                  </tr>
+                </thead>
+                <tbody id="carrito-body">
+                  <tr id="fila-vacia">
+                    <td colspan="5" style="text-align:center;padding:10px;color:#9ca3af;">No hay productos en el carrito.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top:14px;padding:10px;border-radius:12px;background:#f1f5f9;text-align:right;">
+              <strong>Total aproximado: </strong>
+              <span id="total-general">$0</span>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;">
+            <button type="button" class="btn" onclick="enviarCotizacionCorreo()">Enviar cotización por correo</button>
+            <button type="button" class="btn outline" onclick="enviarCotizacionWhatsApp()">Enviar cotización por WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>¿Cómo cotizamos?</h3>
+        <ul class="list">
+          <li>✔️ Definimos especificaciones técnicas y cantidades.</li>
+          <li>✔️ Confirmamos logística y tiempos de entrega.</li>
+          <li>✔️ Enviamos ficha técnica y MSDS cuando aplique.</li>
+          <li>✔️ Acompañamiento hasta la entrega y puesta en marcha.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+<footer id="contacto">
+    <div class="container cols">
+      <div>
+        <h3 style="margin:0 0 8px">Ferkhloe</h3>
+        <p style="margin:0;color:#cfe7db">Bioinsumos, equipos y servicios técnicos para una agricultura sostenible.</p>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <a href="#cotizaciones">Servicios</a><br>
+        <a href="#protocolos">Protocolos HAT</a><br>
+        <a href="#herramientas">Herramientas</a><br>
+        <a href="#cotizaciones">Cotizaciones</a>
+      </div>
+      <div>
+        <h4>Soporte</h4>
+        <a href="mailto:biofabricaferkhloe@gmail.com">Contacto por Correo</a><br>
+        <a href="https://wa.me/573137744450" target="_blank">Contacto por WhatsApp</a>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="container">© <span id="y"></span> Ferkhloe. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <script>
+// ===== main.js — funciones compartidas en todas las páginas de Ferkhloe =====
+
+// Menú móvil
+const hamb = document.getElementById('hamb');
+const menu = document.getElementById('menu');
+
+if (hamb && menu) {
+  hamb.addEventListener('click', () => {
+    const abierto = getComputedStyle(menu).display === 'flex';
+    menu.style.display = abierto ? 'none' : 'flex';
+    hamb.setAttribute('aria-expanded', String(!abierto));
+  });
+
+  // Cerrar el menú móvil automáticamente al elegir una opción
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menu.style.display = 'none';
+      hamb.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+// Año del footer (el footer se repite igual en todas las páginas)
+document.addEventListener('DOMContentLoaded', () => {
+  const y = document.getElementById('y');
+  if (y) y.textContent = new Date().getFullYear();
+});
+
+  </script>
+  <script>
+// ===== Cotizador con carrito =====
+    const listaDeProductosGenerales = [
+      { id: 'leonardita_25', nombre: "Leonardita Ferkhloe (Bulto 25kg)", precio: 100000, unidad: 'unid.' },
+      { id: 'diatomeas_25', nombre: "Diatomeas (25kg)", precio: 125000, unidad: 'unid.' },
+      { id: 'hidroxido_potasio_25', nombre: "Hidróxido de Potasio (25 Kg)", precio: 280000, unidad: 'unid.' },
+      { id: 'hidroxido_potasio_1', nombre: "Hidróxido de Potasio (1 Kg)", precio: 13000, unidad: 'unid.' },
+      { id: 'sulfato_magnesio_25', nombre: "Sulfato de magnesio (25 Kg)", precio: 100000, unidad: 'unid.' },
+      { id: 'sulfato_magnesio_1', nombre: "Sulfato de magnesio (1 Kg)", precio: 4500, unidad: 'unid.' },
+      { id: 'sulfato_manganeso_25', nombre: "Sulfato de manganeso (25 Kg)", precio: 350000, unidad: 'unid.' },
+      { id: 'sulfato_manganeso_1', nombre: "Sulfato de manganeso (1 Kg)", precio: 15000, unidad: 'unid.' },
+      { id: 'acido_borico_25', nombre: "Acido Borico (25 Kg)", precio: 300000, unidad: 'unid.' },
+      { id: 'acido_borico_1', nombre: "Acido Borico (1 Kg)", precio: 14000, unidad: 'unid.' },
+      { id: 'borax_25', nombre: "Borax (25 Kg)", precio: 310000, unidad: 'unid.' },
+      { id: 'borax_1', nombre: "Borax (1 Kg)", precio: 15000, unidad: 'unid.' },
+      { id: 'azufre_25', nombre: "Azufre (25 Kg)", precio: 90000, unidad: 'unid.' },
+      { id: 'azufre_1', nombre: "Azufre (1 Kg)", precio: 4500, unidad: 'unid.' },
+      { id: 'oxiplant_1', nombre: "Oxiplant (1 Lt)", precio: 60000, unidad: 'unid.' },
+      { id: 'oxiplant_20', nombre: "Oxiplant (20 Lt)", precio: 1100000, unidad: 'unid.' },
+      { id: 'ormus_1', nombre: "Ormus (1 Lt)", precio: 100000, unidad: 'unid.' },
+      { id: 'bioprotec_1', nombre: "Bioprotec (1 Lt)", precio: 10000, unidad: 'unid.' },
+      { id: 'bioprotec_20', nombre: "Bioprotec (20 Lt)", precio: 180000, unidad: 'unid.' },
+      { id: 'peroxido_1', nombre: "Peróxido de hidrogeno al 50% (1 Lt)", precio: 11000, unidad: 'unid.' },
+      { id: 'acido_acetico_1', nombre: "Acido acetico Glacial (1 Lt)", precio: 10000, unidad: 'unid.' },
+      { id: 'multimineral_1', nombre: "Multimineral (1 Lt)", precio: 20000, unidad: 'unid.' },
+      { id: 'multimineral_20', nombre: "Multimineral (20 Lt)", precio: 350000, unidad: 'unid.' },
+      { id: 'micronical_25', nombre: "Micronical (25 Kg)", precio: 60000, unidad: 'unid.' },
+      { id: 'agrocal_50', nombre: "Agrocal (50 Kg)", precio: 38000, unidad: 'unid.' },
+      { id: 'bicarbonato_1', nombre: "Bicarbonato de sodio (1 Kg)", precio: 4000, unidad: 'unid.' },
+      { id: 'sulfato_hierro_25', nombre: "Sulfato de Hierro (25 Kg)", precio: 250000, unidad: 'unid.' },
+      { id: 'sulfato_hierro_1', nombre: "Sulfato de Hierro (1 Kg)", precio: 12000, unidad: 'unid.' },
+      { id: 'sulfato_cobre_1', nombre: "Sulfato de Cobre (1 Kg)", precio: 29000, unidad: 'unid.' },
+      { id: 'sulfato_cobre_25', nombre: "Sulfato de Cobre (25 Kg)", precio: 700000, unidad: 'unid.' },
+      { id: 'soil_tester', nombre: "Soil Tester Ferkhloe (1 Un)", precio: 520000, unidad: 'unid.' },
+      { id: 'phmetro', nombre: "pHmetro FerKhloe (1 Un)", precio: 450000, unidad: 'unid.' },
+      { id: 'repuesto_phmetro', nombre: "Repuesto del pHmetro FerKhloe (1 Un)", precio: 150000, unidad: 'unid.' },
+      { id: 'sulfato_zinc_25', nombre: "Sulfato de zinc (25 Kg)", precio: 375000, unidad: 'unid.' },
+      { id: 'sulfato_zinc_1', nombre: "Sulfato de zinc (1 Kg)", precio: 17000, unidad: 'unid.' }
+    ];
+
+    const productosFerkhloe = {};
+    listaDeProductosGenerales.forEach(p => { productosFerkhloe[p.id] = p; });
+
+    let carrito = [];
+
+    function formatoCOP(valor){
+      return valor.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0});
+    }
+
+    function cargarOpcionesProductos() {
+      const select = document.getElementById('producto');
+      if (!select) return;
+      listaDeProductosGenerales.forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p.id;
+        opt.textContent = p.nombre;
+        select.appendChild(opt);
+      });
+      actualizarLabelCantidad();
+    }
+
+    function cargarTarjetasRapidas() {
+      const grid = document.getElementById('grid-productos-rapidos');
+      if (!grid) return;
+      grid.innerHTML = ''; 
+      
+      listaDeProductosGenerales.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'prod-card';
+        card.innerHTML = `
+          <h4>${p.nombre}</h4>
+          <span class="price">${formatoCOP(p.precio)}</span>
+          <input id="qty-${p.id}" type="number" min="1" value="1" placeholder="Cantidad">
+          <button type="button" onclick="agregarProductoDirecto('${p.id}','qty-${p.id}')">Añadir al carrito</button>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function actualizarLabelCantidad(){
+      const prodSelect = document.getElementById('producto');
+      if(!prodSelect) return;
+      const idProd = prodSelect.value;
+      const prod = productosFerkhloe[idProd];
+      document.getElementById('label-cantidad').textContent = 'Cantidad (' + prod.unidad + ')';
+    }
+
+    function agregarAlCarrito(){
+      const prodSelect = document.getElementById('producto');
+      const cantidadInput = document.getElementById('cantidad');
+      if(!prodSelect || !cantidadInput) return;
+
+      const idProd = prodSelect.value;
+      const cantidad = parseFloat(cantidadInput.value) || 0;
+      if(cantidad <= 0) return;
+
+      agregarOAcumular(idProd, cantidad);
+    }
+
+    function agregarProductoDirecto(idProd, inputId){
+      let qty = 1;
+      if(inputId){
+        const el = document.getElementById(inputId);
+        if(el){
+          const v = parseFloat(el.value);
+          if(!isNaN(v) && v > 0) qty = v;
+        }
+      }
+      agregarOAcumular(idProd, qty);
+    }
+
+    function agregarOAcumular(idProd, cantidad){
+      const existente = carrito.find(item => item.id === idProd);
+      if(existente){
+        existente.cantidad += cantidad;
+      }else{
+        carrito.push({ id:idProd, cantidad:cantidad });
+      }
+      renderCarrito();
+    }
+
+    function quitarDelCarrito(idx){
+      carrito.splice(idx,1);
+      renderCarrito();
+    }
+
+    function renderCarrito(){
+      const tbody = document.getElementById('carrito-body');
+      const totalSpan = document.getElementById('total-general');
+      if(!tbody || !totalSpan) return;
+
+      tbody.innerHTML = '';
+      if(carrito.length === 0){
+        const fila = document.createElement('tr');
+        fila.id = 'fila-vacia';
+        fila.innerHTML = '<td colspan="5" style="text-align:center;padding:10px;color:#9ca3af;">No hay productos en el carrito.</td>';
+        tbody.appendChild(fila);
+        totalSpan.textContent = '$0';
+        return;
+      }
+
+      let total = 0;
+      carrito.forEach((item, idx) => {
+        const prod = productosFerkhloe[item.id];
+        const subtotal = prod.precio * item.cantidad;
+        total += subtotal;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="padding:6px;border-bottom:1px solid #e5e7eb;">${prod.nombre}</td>
+          <td style="padding:6px;border-bottom:1px solid #e5e7eb;text-align:right;">${item.cantidad} ${prod.unidad}</td>
+          <td style="padding:6px;border-bottom:1px solid #e5e7eb;text-align:right;">${formatoCOP(prod.precio)}</td>
+          <td style="padding:6px;border-bottom:1px solid #e5e7eb;text-align:right;">${formatoCOP(subtotal)}</td>
+          <td style="padding:6px;border-bottom:1px solid #e5e7eb;text-align:center;">
+            <button type="button" onclick="quitarDelCarrito(${idx})" style="border:0;background:#fee2e2;color:#b91c1c;padding:4px 8px;border-radius:999px;font-size:12px;cursor:pointer;">
+              X
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      totalSpan.textContent = formatoCOP(total);
+    }
+
+    function construirTextoCotizacion(){
+      const nombreEl  = document.getElementById('nombre');
+      const telEl     = document.getElementById('telefono');
+      const ubiEl     = document.getElementById('ubicacion');
+
+      const nombre  = nombreEl ? (nombreEl.value.trim() || 'No especificado') : 'No especificado';
+      const telefono  = telEl ? (telEl.value.trim() || 'No especificado') : 'No especificado';
+      const ubicacion = ubiEl ? (ubiEl.value.trim() || 'No especificado') : 'No especificado';
+
+      let lineas = [];
+      lineas.push('Solicitud de cotización desde la página Ferkhloe:');
+      lineas.push('');
+      lineas.push('Nombre: ' + nombre);
+      lineas.push('Teléfono / WhatsApp: ' + telefono);
+      lineas.push('Municipio / Departamento: ' + ubicacion);
+      lineas.push('');
+      lineas.push('Productos solicitados:');
+
+      let total = 0;
+      carrito.forEach(item => {
+        const prod = productosFerkhloe[item.id];
+        const subtotal = prod.precio * item.cantidad;
+        total += subtotal;
+        lineas.push(
+          '- ' + prod.nombre +
+          ' | Cantidad: ' + item.cantidad + ' ' + prod.unidad +
+          ' | P. unitario: ' + formatoCOP(prod.precio) +
+          ' | Subtotal: ' + formatoCOP(subtotal)
+        );
+      });
+
+      lineas.push('');
+      lineas.push('Total aproximado: ' + formatoCOP(total));
+      lineas.push('');
+      lineas.push('Por favor responder con disponibilidad, tiempos de entrega y forma de pago.');
+      lineas.push('');
+      lineas.push('Atentamente,');
+      lineas.push(nombre);
+
+      return lineas.join('\n');
+    }
+
+    // Valida los datos mínimos antes de enviar por cualquiera de los dos medios.
+    // Devuelve true si todo está correcto; si no, muestra un mensaje claro y
+    // pone el foco en el primer campo con problema.
+    function validarFormularioCotizacion(){
+      const nombreEl = document.getElementById('nombre');
+      const telEl = document.getElementById('telefono');
+      const aceptoEl = document.getElementById('acepto-datos');
+
+      if(carrito.length === 0){
+        alert('Agrega al menos un producto al carrito antes de enviar la cotización.');
+        return false;
+      }
+      if(!nombreEl.value.trim()){
+        alert('Por favor escribe tu nombre completo antes de enviar la cotización.');
+        nombreEl.focus();
+        return false;
+      }
+      if(!telEl.value.trim()){
+        alert('Por favor escribe un teléfono o WhatsApp de contacto antes de enviar la cotización.');
+        telEl.focus();
+        return false;
+      }
+      if(aceptoEl && !aceptoEl.checked){
+        alert('Debes autorizar el tratamiento de tus datos personales para poder enviar la cotización.');
+        aceptoEl.focus();
+        return false;
+      }
+      return true;
+    }
+
+    function enviarCotizacionCorreo(){
+      if(!validarFormularioCotizacion()) return;
+      const to = 'biofabricaferkhloe@gmail.com';
+      const subject = encodeURIComponent('Solicitud de cotización – Ferkhloe');
+      const body = encodeURIComponent(construirTextoCotizacion());
+      const mailtoURL = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+      window.location.href = mailtoURL;
+    }
+
+    function enviarCotizacionWhatsApp(){
+      if(!validarFormularioCotizacion()) return;
+      const texto = encodeURIComponent(construirTextoCotizacion());
+      const waURL = 'https://wa.me/573137744450?text=' + texto;
+      window.open(waURL, '_blank');
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      cargarOpcionesProductos();
+      cargarTarjetasRapidas();
+      renderCarrito();
+    });
+  </script>
+
+</body>
+</html>
