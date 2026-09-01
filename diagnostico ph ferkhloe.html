@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌾 Diagnóstico Agrícola según pH | Ferkhloe</title>
+  <meta name="description" content="Herramienta dinámica para interpretar el pH del suelo por cultivo, disponibilidad relativa de nutrientes y recomendaciones de manejo.">
+  <link rel="icon" href="https://ferkhloe.webcindario.com/logo%20ferkhloe.png" type="image/png">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 1000px; margin: auto; background: #f4f4f4; }
+    header { text-align: center; padding: 20px; }
+    header img { max-width: 220px; width: 100%; height: auto; }
+    h1, h2 { color: #2c3e50; }
+    select, input, button { padding: 6px; margin: 10px 0; font-size: 16px; }
+    select, input { max-width: 100%; }
+    button { background: #27ae60; color: white; border: none; cursor: pointer; border-radius: 4px; }
+    button:hover { background: #219150; }
+    .card { background: #fff; padding: 20px; margin-top: 20px; border-radius: 8px; border: 1px solid #ccc; }
+    .safe { background-color: #e6ffe6; }
+    .warning { background-color: #fff8d9; }
+    .danger { background-color: #ffe6e6; }
+    canvas { margin-top: 20px; background: #fff; border-radius: 10px; }
+    ul { margin: 0 0 0 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 8px; border: 1px solid #ccc; text-align: center; }
+    th { background-color: #f0f0f0; }
+    .nota { font-size: 13px; color: #555; line-height: 1.45; }
+    .rango { font-weight: bold; color: #1d6b3b; }
+    footer { margin-top: 28px; padding: 18px 0; border-top: 1px solid #ccc; text-align: center; color: #444; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://ferkhloe.webcindario.com/logo%20ferkhloe.png" alt="Logo Ferkhloe">
+  </header>
+
+  <h1>📊 Diagnóstico Dinámico del Suelo</h1>
+
+  <label>🌿 Cultivo:</label><br>
+  <select id="cultivoSelect">
+    <optgroup label="Frutales">
+      <option value="aguacate_hass">Aguacate Hass</option>
+      <option value="aguacate_papelillo">Aguacate Papelillo</option>
+      <option value="arandano">Arándano</option>
+      <option value="banano">Banano</option>
+      <option value="cacao">Cacao</option>
+      <option value="cafe">Café</option>
+      <option value="durazno">Durazno</option>
+      <option value="feijoa">Feijoa</option>
+      <option value="fresa">Fresa</option>
+      <option value="granadilla">Granadilla</option>
+      <option value="guanabana">Guanábana</option>
+      <option value="gulupa">Gulupa</option>
+      <option value="guayaba">Guayaba</option>
+      <option value="lima_tahiti">Lima ácida Tahití</option>
+      <option value="limon">Limón</option>
+      <option value="lichi">Lichi</option>
+      <option value="lulo">Lulo</option>
+      <option value="mandarina">Mandarina</option>
+      <option value="mango">Mango</option>
+      <option value="mangostino">Mangostino</option>
+      <option value="maracuya">Maracuyá</option>
+      <option value="maranon">Marañón</option>
+      <option value="melon">Melón</option>
+      <option value="mora">Mora de Castilla</option>
+      <option value="naranja">Naranja</option>
+      <option value="tangelo">Naranja Tangelo</option>
+      <option value="papaya">Papaya</option>
+      <option value="pina">Piña</option>
+      <option value="pitahaya">Pitahaya</option>
+      <option value="platano">Plátano</option>
+      <option value="rambutan">Rambután</option>
+      <option value="tomate_arbol">Tomate de árbol</option>
+      <option value="uchuva">Uchuva</option>
+      <option value="uva">Uva</option>
+    </optgroup>
+    <optgroup label="Hortalizas">
+      <option value="aji">Ají</option>
+      <option value="apio">Apio</option>
+      <option value="brocoli">Brócoli</option>
+      <option value="cebolla">Cebolla</option>
+      <option value="col_china">Col china</option>
+      <option value="coliflor">Coliflor</option>
+      <option value="esparrago">Espárrago</option>
+      <option value="habichuela">Habichuela</option>
+      <option value="lechuga">Lechuga</option>
+      <option value="nabo">Nabo</option>
+      <option value="pepino">Pepino</option>
+      <option value="pimenton">Pimentón</option>
+      <option value="rabano">Rábano</option>
+      <option value="repollo">Repollo</option>
+      <option value="tomate">Tomate</option>
+      <option value="zanahoria">Zanahoria</option>
+    </optgroup>
+    <optgroup label="Raíces, tubérculos y otros">
+      <option value="batata">Batata</option>
+      <option value="maiz">Maíz</option>
+      <option value="name">Ñame</option>
+      <option value="papa">Papa</option>
+      <option value="yuca">Yuca</option>
+    </optgroup>
+  </select>
+
+  <br><label>🧪 Ingrese el pH del suelo:</label><br>
+  <input type="number" id="phInput" min="3.5" max="9.5" step="0.1" value="6.5">
+  <button onclick="analizarPH()">Analizar</button>
+
+  <div class="card" id="resultado"></div>
+  <canvas id="graficoNutrientes" height="120"></canvas>
+
+  <div class="card">
+    <h2>📚 Referencias técnicas</h2>
+    <p class="nota">
+      Los rangos son orientativos y deben interpretarse junto con textura, CIC/CICE, materia orgánica,
+      saturación de bases, aluminio, conductividad eléctrica, calidad del agua, portainjerto, etapa del cultivo
+      y análisis foliar. Referencias base: FAO EcoCrop/GAEZ; UF/IFAS Extension para cítricos;
+      University of California ANR para aguacate; University of Minnesota Extension para arándano y espárrago;
+      y criterios generales de disponibilidad de nutrientes en función del pH.
+    </p>
+  </div>
+
+  <script>
+    const CULTIVOS = {
+      aguacate_hass: {nombre:"Aguacate Hass", min:5.0, max:7.0, ideal:"5.5–6.5", nota:"Evitar alcalinidad alta; puede disminuir disponibilidad de Fe y Zn. Priorizar drenaje y sanidad radicular."},
+      aguacate_papelillo: {nombre:"Aguacate Papelillo", min:5.0, max:7.0, ideal:"5.5–6.5", nota:"Interpretar también según portainjerto, textura y drenaje."},
+      arandano: {nombre:"Arándano", min:4.5, max:5.2, ideal:"4.5–5.2", nota:"Cultivo acidófilo. No encalar rutinariamente para llevarlo a pH 6–7."},
+      banano: {nombre:"Banano", min:5.5, max:7.0, ideal:"5.5–6.5", nota:"Buen drenaje y equilibrio Ca–Mg–K son determinantes."},
+      cacao: {nombre:"Cacao", min:5.0, max:7.0, ideal:"5.5–6.5", nota:"Evitar toxicidad por Al y deficiencias de bases en suelos fuertemente ácidos."},
+      cafe: {nombre:"Café", min:5.0, max:6.5, ideal:"5.2–6.2", nota:"La corrección debe basarse en acidez intercambiable, Ca, Mg y Al, no únicamente en pH."},
+      durazno: {nombre:"Durazno", min:6.0, max:7.0, ideal:"6.0–6.5", nota:"Evitar encharcamiento y excesos de cal."},
+      feijoa: {nombre:"Feijoa", min:5.5, max:7.0, ideal:"5.5–6.5", nota:"Prefiere suelos bien drenados."},
+      fresa: {nombre:"Fresa", min:5.5, max:6.5, ideal:"5.5–6.2", nota:"Evitar salinidad y excesos de bicarbonatos en el agua."},
+      granadilla: {nombre:"Granadilla", min:5.5, max:6.8, ideal:"5.5–6.5", nota:"Revisar drenaje y sanidad del cuello y raíces."},
+      guanabana: {nombre:"Guanábana", min:5.5, max:7.0, ideal:"5.5–6.5", nota:"Sensible al mal drenaje."},
+      gulupa: {nombre:"Gulupa", min:5.5, max:6.8, ideal:"5.5–6.5", nota:"Interpretar con Ca, Mg y condición radicular."},
+      guayaba: {nombre:"Guayaba", min:5.0, max:7.0, ideal:"5.5–6.5", nota:"Amplia adaptación, pero el equilibrio de bases mejora nutrición y estructura."},
+      lima_tahiti: {nombre:"Lima ácida Tahití", min:5.5, max:6.5, ideal:"5.5–6.5", nota:"En cítricos, pH cercano a 6.0–6.5 favorece disponibilidad general. Considerar portainjerto."},
+      limon: {nombre:"Limón", min:5.5, max:6.5, ideal:"5.5–6.5", nota:"UF/IFAS reporta preferencia aproximada de 5.5–6.5 para limón."},
+      lichi: {nombre:"Lichi", min:5.0, max:6.5, ideal:"5.0–6.5", nota:"Prefiere suelo ligeramente ácido, fértil y bien drenado."},
+      lulo: {nombre:"Lulo", min:5.2, max:6.5, ideal:"5.5–6.2", nota:"Evitar acidez extrema y saturación de Al."},
+      mandarina: {nombre:"Mandarina", min:5.5, max:6.5, ideal:"5.5–6.5", nota:"Rango general para cítricos; ajustar según portainjerto y suelo."},
+      mango: {nombre:"Mango", min:5.5, max:7.5, ideal:"5.5–7.0", nota:"Tolera rango relativamente amplio si existe buen drenaje."},
+      mangostino: {nombre:"Mangostino", min:5.0, max:6.0, ideal:"5.0–6.0", nota:"FAO EcoCrop registra 5.0–6.0 como rango óptimo y 4.3–7.5 como rango absoluto."},
+      maracuya: {nombre:"Maracuyá", min:5.5, max:6.8, ideal:"5.5–6.5", nota:"Priorizar drenaje, Ca y Mg; confirmar enfermedades de raíz antes de intervenir."},
+      maranon: {nombre:"Marañón", min:5.0, max:6.5, ideal:"5.0–6.5", nota:"Tolera suelos ácidos, pero evitar toxicidad de Al y mal drenaje."},
+      melon: {nombre:"Melón", min:6.0, max:7.5, ideal:"6.0–7.0", nota:"Sensible a salinidad y problemas de drenaje."},
+      mora: {nombre:"Mora de Castilla", min:5.5, max:6.5, ideal:"5.5–6.2", nota:"Revisar Ca, B, Zn, drenaje y sanidad radicular."},
+      naranja: {nombre:"Naranja", min:5.5, max:6.5, ideal:"6.0–6.5", nota:"UF/IFAS recomienda mantener cítricos alrededor de 6.0–6.5."},
+      tangelo: {nombre:"Naranja Tangelo", min:5.5, max:6.5, ideal:"6.0–6.5", nota:"Usar rango general de cítricos; el portainjerto puede modificar tolerancia."},
+      papaya: {nombre:"Papaya", min:5.5, max:7.0, ideal:"5.5–6.5", nota:"Evitar saturación hídrica y salinidad."},
+      pina: {nombre:"Piña", min:4.5, max:6.5, ideal:"4.5–5.5", nota:"Tolera y normalmente prefiere condiciones más ácidas que muchos frutales."},
+      pitahaya: {nombre:"Pitahaya", min:5.5, max:7.0, ideal:"5.5–6.5", nota:"Evitar encharcamiento y excesos de sales."},
+      platano: {nombre:"Plátano", min:5.5, max:7.0, ideal:"5.5–6.5", nota:"Interpretar con Ca, Mg, K, Al y drenaje."},
+      rambutan: {nombre:"Rambután", min:5.0, max:6.5, ideal:"5.0–6.5", nota:"Prefiere suelos ácidos a ligeramente ácidos, con buen drenaje."},
+      tomate_arbol: {nombre:"Tomate de árbol", min:5.5, max:6.5, ideal:"5.5–6.2", nota:"Evitar acidez extrema y mal drenaje."},
+      uchuva: {nombre:"Uchuva", min:5.5, max:7.0, ideal:"5.5–6.5", nota:"Interpretar con materia orgánica, Ca, B y drenaje."},
+      uva: {nombre:"Uva", min:5.5, max:7.5, ideal:"6.0–7.0", nota:"El portainjerto y la presencia de carbonatos modifican tolerancia."},
+
+      aji: {nombre:"Ají", min:5.5, max:7.0, ideal:"6.0–6.8", nota:"Evitar extremos de acidez y salinidad."},
+      apio: {nombre:"Apio", min:6.0, max:7.0, ideal:"6.0–6.8", nota:"Requiere buena disponibilidad de Ca y B."},
+      brocoli: {nombre:"Brócoli", min:6.0, max:7.2, ideal:"6.2–7.0", nota:"Un pH cercano a neutral ayuda a reducir riesgo de hernia de las crucíferas, pero no sustituye diagnóstico."},
+      cebolla: {nombre:"Cebolla", min:6.0, max:7.0, ideal:"6.0–6.8", nota:"Sensible a acidez alta y Al intercambiable."},
+      col_china: {nombre:"Col china", min:6.0, max:7.2, ideal:"6.2–7.0", nota:"Manejar con énfasis en Ca, B y sanidad radicular."},
+      coliflor: {nombre:"Coliflor", min:6.0, max:7.2, ideal:"6.2–7.0", nota:"Evitar acidez fuerte; revisar B y Mo."},
+      esparrago: {nombre:"Espárrago", min:6.5, max:7.0, ideal:"6.5–7.0", nota:"University of Minnesota recomienda idealmente 6.5–7.0."},
+      habichuela: {nombre:"Habichuela", min:5.8, max:7.0, ideal:"6.0–6.8", nota:"Evitar acidez fuerte, Al alto y compactación."},
+      lechuga: {nombre:"Lechuga", min:6.0, max:7.0, ideal:"6.0–6.8", nota:"Vigilar salinidad y calidad microbiológica del agua."},
+      nabo: {nombre:"Nabo", min:5.8, max:7.2, ideal:"6.0–7.0", nota:"En crucíferas, revisar riesgo de Plasmodiophora brassicae en suelos ácidos."},
+      pepino: {nombre:"Pepino", min:5.8, max:7.0, ideal:"6.0–6.8", nota:"Vigilar CE, Ca, Mg y agua de riego."},
+      pimenton: {nombre:"Pimentón", min:5.5, max:7.0, ideal:"6.0–6.8", nota:"Evitar salinidad y déficit de Ca."},
+      rabano: {nombre:"Rábano", min:5.8, max:7.2, ideal:"6.0–7.0", nota:"Evitar acidez extrema y exceso de N."},
+      repollo: {nombre:"Repollo", min:6.0, max:7.2, ideal:"6.2–7.0", nota:"pH más cercano a 7 puede disminuir la expresión de hernia, junto con Ca, drenaje y manejo sanitario."},
+      tomate: {nombre:"Tomate", min:5.5, max:7.0, ideal:"6.0–6.8", nota:"Vigilar Ca, K, Mg, CE y sanidad radicular."},
+      zanahoria: {nombre:"Zanahoria", min:5.8, max:7.0, ideal:"6.0–6.8", nota:"Evitar compactación y exceso de N."},
+
+      batata: {nombre:"Batata", min:5.2, max:6.5, ideal:"5.5–6.2", nota:"Tolera acidez moderada; revisar K y drenaje."},
+      maiz: {nombre:"Maíz", min:5.5, max:7.2, ideal:"5.8–6.8", nota:"Interpretar con saturación de Al, P, Zn y materia orgánica."},
+      name: {nombre:"Ñame", min:5.5, max:6.5, ideal:"5.5–6.2", nota:"Evitar compactación y anegamiento."},
+      papa: {nombre:"Papa", min:4.8, max:6.2, ideal:"5.0–5.8", nota:"Un pH relativamente ácido puede ayudar a limitar sarna común; no elevar pH sin necesidad."},
+      yuca: {nombre:"Yuca", min:5.0, max:7.0, ideal:"5.5–6.5", nota:"Tolera cierta acidez; vigilar Al, K, Ca y estructura del suelo."}
+    };
+
+    const ctx = document.getElementById('graficoNutrientes').getContext('2d');
+    let chart;
+
+    function clamp(v, min=10, max=100) {
+      return Math.max(min, Math.min(max, Math.round(v)));
+    }
+
+    // Índices relativos orientativos. Sustituyen los valores aleatorios del HTML original.
+    function disponibilidadPorPH(ph) {
+      const gauss = (opt, ancho, piso=20) => clamp(piso + (100-piso) * Math.exp(-Math.pow((ph-opt)/ancho, 2)));
+      return {
+        N: gauss(6.5, 1.6, 35),
+        P: gauss(6.4, 1.15, 18),
+        K: gauss(6.4, 1.8, 45),
+        Ca: gauss(7.0, 1.8, 20),
+        Mg: gauss(6.8, 1.7, 25),
+        S: gauss(6.2, 1.8, 40),
+        Fe: gauss(5.2, 1.9, 25),
+        Mn: gauss(5.3, 1.7, 20),
+        Zn: gauss(5.6, 1.55, 20),
+        Cu: gauss(5.5, 1.7, 25),
+        Mo: gauss(7.0, 1.6, 18),
+        B: gauss(6.2, 1.45, 25)
+      };
+    }
+
+    function verificarCruciferas(ph, cultivo) {
+      const cruciferas = ["repollo", "coliflor", "brocoli", "col_china", "nabo", "rabano"];
+      if (!cruciferas.includes(cultivo)) return "";
+
+      let riesgo = "";
+      if (ph < 5.7) {
+        riesgo = `<tr><td>Hernia de las crucíferas<br><small>(Plasmodiophora brassicae)</small></td>
+          <td>Mayor riesgo en suelo ácido</td>
+          <td>Confirmar en raíces; mejorar drenaje y corregir Ca/pH según análisis.</td></tr>`;
+      }
+      return `
+        <h3>⚠️ Vigilancia fitosanitaria en crucíferas</h3>
+        <table>
+          <thead><tr><th>Problema</th><th>Relación con pH</th><th>Criterio</th></tr></thead>
+          <tbody>
+            ${riesgo || `<tr><td>Hernia de las crucíferas</td><td>Riesgo por pH reducido</td><td>El pH actual no indica por sí solo presencia o ausencia del patógeno.</td></tr>`}
+            <tr><td>Alternaria, mildiu, bacteriosis y virus</td><td>No se diagnostican por pH</td><td>Requieren síntomas, historial, clima y confirmación del agente.</td></tr>
+          </tbody>
+        </table>`;
+    }
+
+    function recomendacionesSegunPH(ph, crop) {
+      if (ph < crop.min) {
+        return `
+          <h3>🔴 pH por debajo del rango del cultivo</h3>
+          <p><strong>Posibles efectos:</strong> mayor riesgo de Al/Mn disponibles en exceso y menor disponibilidad de Ca, Mg, P y Mo, dependiendo del suelo.</p>
+          <h4>🌱 Recomendaciones:</h4>
+          <ul>
+            <li>Confirmar pH con método de laboratorio y revisar <strong>Al intercambiable, Ca, Mg, CICE/CIC y saturación de bases</strong>.</li>
+            <li>Corregir primero los elementos realmente limitantes; no aplicar cal únicamente por el número de pH.</li>
+            <li>Usar materia orgánica estable, cobertura y biología del suelo para mejorar estructura y actividad radicular.</li>
+            <li>El extracto de leonardita puede usarse como acondicionador dentro del programa del predio, pero <strong>no sustituye una corrección calculada de Ca/Mg</strong>.</li>
+            <li>Si se requiere encalado o lechada mineral, definir fuente y dosis según textura, CICE, Al, Ca y Mg.</li>
+            <li>Monitorear pH después de las intervenciones y complementar con análisis foliar/savia cuando sea pertinente.</li>
+            <li>Ante pudriciones radiculares, diagnosticar primero drenaje, anoxia y agente causal antes de usar oxidantes.</li>
+          </ul>`;
+      }
+
+      if (ph > crop.max) {
+        return `
+          <h3>🔵 pH por encima del rango del cultivo</h3>
+          <p><strong>Posibles efectos:</strong> menor disponibilidad de Fe, Mn, Zn, Cu y, según condiciones, P.</p>
+          <h4>🌿 Recomendaciones:</h4>
+          <ul>
+            <li>Revisar bicarbonatos y alcalinidad del agua, carbonatos del suelo, CE y saturación de bases.</li>
+            <li>Evitar nuevas aplicaciones de cal o fuentes alcalinizantes hasta conocer el balance del suelo.</li>
+            <li>Favorecer materia orgánica, actividad biológica y fuentes acidificantes permitidas por el sistema productivo cuando el análisis lo justifique.</li>
+            <li>Corregir micronutrientes únicamente cuando análisis de suelo/foliar y síntomas sean coherentes.</li>
+            <li>En cultivos sensibles, considerar aplicaciones foliares de micronutrientes compatibles mientras se corrige la causa edáfica.</li>
+            <li>Monitorear nuevamente pH y CE después de cada intervención importante.</li>
+          </ul>`;
+      }
+
+      return `
+        <h3>🟢 pH dentro del rango del cultivo</h3>
+        <p><strong>Condición:</strong> el pH es compatible con el cultivo, pero por sí solo no confirma fertilidad ni sanidad.</p>
+        <h4>🌿 Recomendaciones:</h4>
+        <ul>
+          <li>Mantener cobertura, materia orgánica estable y actividad biológica del suelo.</li>
+          <li>Conservar equilibrio de Ca, Mg, K y micronutrientes según análisis.</li>
+          <li>Evitar aplicaciones correctivas de pH sin necesidad.</li>
+          <li>Vigilar CE, humedad, drenaje y calidad del agua.</li>
+          <li>Usar bioinsumos, minerales y aplicaciones foliares según diagnóstico, etapa fenológica y objetivo concreto.</li>
+          <li>Monitorear pH en el tiempo para evaluar tendencia, no solo una lectura aislada.</li>
+        </ul>`;
+    }
+
+    function analizarPH() {
+      const ph = parseFloat(document.getElementById("phInput").value);
+      const cultivo = document.getElementById("cultivoSelect").value;
+      const res = document.getElementById("resultado");
+      const crop = CULTIVOS[cultivo];
+
+      if (!crop || Number.isNaN(ph)) {
+        res.innerHTML = "<p>Ingrese un cultivo y un valor de pH válido.</p>";
+        return;
+      }
+
+      let estadoClase = ph < crop.min || ph > crop.max ? "danger" : "safe";
+      let desviacion = "";
+      if (ph < crop.min) desviacion = `Está ${ (crop.min - ph).toFixed(1) } unidades por debajo del límite inferior.`;
+      else if (ph > crop.max) desviacion = `Está ${ (ph - crop.max).toFixed(1) } unidades por encima del límite superior.`;
+      else desviacion = "El valor está dentro del rango orientativo del cultivo.";
+
+      let html = `
+        <h2>📋 Diagnóstico para <strong>${crop.nombre.toUpperCase()}</strong> con pH ${ph.toFixed(1)}</h2>
+        <div class="${estadoClase} card">
+          <p><strong>Rango orientativo:</strong> <span class="rango">${crop.min.toFixed(1)}–${crop.max.toFixed(1)}</span></p>
+          <p><strong>Zona preferente:</strong> ${crop.ideal}</p>
+          <p><strong>Lectura:</strong> ${desviacion}</p>
+          <p><strong>Observación del cultivo:</strong> ${crop.nota}</p>
+          ${recomendacionesSegunPH(ph, crop)}
+        </div>`;
+
+      html += verificarCruciferas(ph, cultivo);
+      html += `
+        <p class="nota"><strong>Importante:</strong> el pH modifica disponibilidad de nutrientes y ecología de la rizósfera,
+        pero no permite diagnosticar por sí solo Fusarium, Phytophthora, Pythium, Ralstonia, Rosellinia, nematodos u otros agentes.
+        La confirmación debe integrar síntomas, raíces, drenaje, análisis microbiológico o diagnóstico fitopatológico cuando corresponda.</p>`;
+
+      res.innerHTML = html;
+
+      const nutrientes = ["N","P","K","Ca","Mg","S","Fe","Mn","Zn","Cu","Mo","B"];
+      const dispObj = disponibilidadPorPH(ph);
+      const disponibilidad = nutrientes.map(n => dispObj[n]);
+
+      if (chart) chart.destroy();
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: nutrientes,
+          datasets: [{
+            label: 'Disponibilidad relativa orientativa (%)',
+            data: disponibilidad,
+            backgroundColor: 'rgba(39, 174, 96, 0.6)',
+            borderColor: 'rgba(39, 174, 96, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: { y: { beginAtZero: true, max: 100 } },
+          plugins: {
+            tooltip: {
+              callbacks: {
+                afterLabel: () => 'Índice relativo; no equivale a concentración medida.'
+              }
+            }
+          }
+        }
+      });
+    }
+
+    document.getElementById("cultivoSelect").addEventListener("change", analizarPH);
+    document.getElementById("phInput").addEventListener("input", analizarPH);
+    window.onload = analizarPH;
+  </script>
+
+  <footer>
+    Realizado por el gestor del Modelo de Agricultura Tropical:
+    <strong>Diego A. Vanegas T.</strong>
+  </footer>
+
+</body>
+</html>
