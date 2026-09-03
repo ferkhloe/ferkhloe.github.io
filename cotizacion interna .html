@@ -349,6 +349,24 @@
             }
         }
 
+
+        /* Mejoras para celular */
+        @media (max-width: 600px) {
+            body { padding: 8px; }
+            .container { padding: 16px; border-radius: 0; }
+            .header { gap: 12px; }
+            .logo-img { max-width: 190px; height: auto; }
+            .date-info { width: 100%; min-width: 0; }
+            .quote-number input { width: 100px; }
+            table { font-size: 0.9em; }
+            th, td { padding: 7px 5px; }
+            #tablaProductos { min-width: 680px; }
+            #invoice { overflow-x: auto; }
+            .actions button { width: 100%; margin: 5px 0; }
+            .payment-section { align-items: flex-start; }
+            .payment-qr img { max-width: 105px; }
+        }
+
         @media print {
             body {
                 background: white;
@@ -520,6 +538,9 @@
             <button class="btn-manage" onclick="abrirModalProductos()">📦 Administrar Productos</button>
             <button class="btn-save" onclick="guardarCotizacion()">💾 Guardar Cotización</button>
             <button class="btn-new" onclick="nuevaCotizacion()">🆕 Nueva Cotización</button>
+            <button class="btn-manage" onclick="exportarRespaldo()">⬇️ Exportar respaldo</button>
+            <button class="btn-manage" onclick="document.getElementById('inputRespaldo').click()">⬆️ Importar respaldo</button>
+            <input type="file" id="inputRespaldo" accept="application/json,.json" style="display:none" onchange="importarRespaldo(event)">
             <button class="btn-print" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
         </div>
 
@@ -557,54 +578,57 @@
     const STORAGE_COUNTER = 'ferkhloe_consecutivo';
     const STORAGE_QUOTES = 'ferkhloe_cotizaciones';
     const STORAGE_PRODUCTS = 'ferkhloe_productos_personalizados';
+    // Catálogo base sincronizado con cotizaciones.html el 03/09/2026.
+    // Se conservan además los productos internos que no aparecen en la página pública.
 
     const productosBaseIniciales = [
-        { nombre: "Seleccione un producto...", precio: 0 },
-        { nombre: "Leonardita Ferkhloe (Bulto 25kg)", precio: 100000 },
-        { nombre: "Diatomeas (25kg)", precio: 125000 },
-        { nombre: "Diatomeas (1kg)", precio: 5000 },
-        { nombre: "Hidróxido de Potasio (25 Kg)", precio: 280000 },
-        { nombre: "Hidróxido de Potasio (1 Kg)", precio: 13000 },
-        { nombre: "Sulfato de magnesio (25 Kg)", precio: 100000 },
-        { nombre: "Sulfato de magnesio (1 Kg)", precio: 4500 },
-        { nombre: "Sulfato de manganeso (25 Kg)", precio: 350000 },
-        { nombre: "Sulfato de manganeso (1 Kg)", precio: 15000 },
-        { nombre: "Acido Borico (25 Kg)", precio: 300000 },
-        { nombre: "Acido Borico (1 Kg)", precio: 14000 },
-        { nombre: "Borax (25 Kg)", precio: 310000 },
-        { nombre: "Borax (1 Kg)", precio: 15000 },
-        { nombre: "Azufre (25 Kg)", precio: 90000 },
-        { nombre: "Azufre (1 Kg)", precio: 4500 },
-        { nombre: "Oxiplant (1 Lt)", precio: 60000 },
-        { nombre: "Oxiplant (20 Lt)", precio: 1100000 },
-        { nombre: "Ormus (1 Lt)", precio: 100000 },
-        { nombre: "Bioprotec (1 Lt)", precio: 10000 },
-        { nombre: "Bioprotec (20 Lt)", precio: 180000 },
-        { nombre: "Peróxido de hidrógeno al 50% (1 Lt)", precio: 11000 },
-        { nombre: "Ácido acético Glacial (1 Lt)", precio: 10000 },
-        { nombre: "Ácido Cítrico (1 Kg)", precio: 8000 },
-        { nombre: "Ácido Cítrico (25 Kg)", precio: 170000 },
-        { nombre: "Multimineral (1 Lt)", precio: 20000 },
-        { nombre: "Multimineral (20 Lt)", precio: 350000 },
-        { nombre: "Micronical (25 Kg)", precio: 60000 },
-        { nombre: "Agrocal (50 Kg)", precio: 38000 },
-        { nombre: "Bicarbonato de sodio (1 Kg)", precio: 4000 },
-        { nombre: "Sulfato de Hierro (25 Kg)", precio: 250000 },
-        { nombre: "Sulfato de Hierro (1 Kg)", precio: 12000 },
-        { nombre: "Sulfato de Cobre (1 Kg)", precio: 35000 },
-        { nombre: "Sulfato de Cobre (25 Kg)", precio: 790000 },
-        { nombre: "Cu de Cobre pentahidro (1 Lts)", precio: 16000 },
-        { nombre: "Soil Tester Ferkhloe (1 Un)", precio: 520000 },
-        { nombre: "pHmetro Ferkhloe (1 Un)", precio: 450000 },
-        { nombre: "Repuesto del pHmetro Ferkhloe (1 Un)", precio: 150000 },
-        { nombre: "Sulfato de zinc (25 Kg)", precio: 375000 },
-        { nombre: "Sulfato de zinc (25 Kg)", precio: 375000 },
-        { nombre: "Zeolita (1 Kg)", precio: 7000 },
-        { nombre: "Sulfato de Calcio (1 Kg)", precio: 6000 },
-        { nombre: "harina de Rocas (1 Kg)", precio: 3500 },
-        { nombre: "Alcohol  (1 Lt)", precio: 12000 },
-        { nombre: "Molibdeno  ( Kg)", precio: 175000 },
-        { nombre: "Sulfato de Cobalto (1 Kg)", precio: 153000 }
+        { nombre: 'Seleccione un producto...', precio: 0 },
+        { nombre: 'Leonardita Ferkhloe (Bulto 25kg)', precio: 100000 },
+        { nombre: 'Diatomeas (25kg)', precio: 125000 },
+        { nombre: 'Diatomeas (1kg)', precio: 5000 },
+        { nombre: 'Hidróxido de Potasio (25 Kg)', precio: 280000 },
+        { nombre: 'Hidróxido de Potasio (1 Kg)', precio: 13000 },
+        { nombre: 'Sulfato de magnesio (25 Kg)', precio: 100000 },
+        { nombre: 'Sulfato de magnesio (1 Kg)', precio: 4500 },
+        { nombre: 'Sulfato de manganeso (25 Kg)', precio: 350000 },
+        { nombre: 'Sulfato de manganeso (1 Kg)', precio: 15000 },
+        { nombre: 'Acido Borico (25 Kg)', precio: 300000 },
+        { nombre: 'Acido Borico (1 Kg)', precio: 14000 },
+        { nombre: 'Borax (25 Kg)', precio: 310000 },
+        { nombre: 'Borax (1 Kg)', precio: 15000 },
+        { nombre: 'Azufre (25 Kg)', precio: 90000 },
+        { nombre: 'Azufre (1 Kg)', precio: 4500 },
+        { nombre: 'Oxiplant (1 Lt)', precio: 60000 },
+        { nombre: 'Oxiplant (20 Lt)', precio: 1100000 },
+        { nombre: 'Ormus (1 Lt)', precio: 100000 },
+        { nombre: 'Bioprotec (1 Lt)', precio: 10000 },
+        { nombre: 'Bioprotec (20 Lt)', precio: 180000 },
+        { nombre: 'Peróxido de hidrogeno al 50% (1 Lt)', precio: 11000 },
+        { nombre: 'Acido acetico Glacial (1 Lt)', precio: 10000 },
+        { nombre: 'Ácido Cítrico (1 Kg)', precio: 8000 },
+        { nombre: 'Ácido Cítrico (25 Kg)', precio: 170000 },
+        { nombre: 'Multimineral (1 Lt)', precio: 20000 },
+        { nombre: 'Multimineral (20 Lt)', precio: 350000 },
+        { nombre: 'Micronical (25 Kg)', precio: 60000 },
+        { nombre: 'Agrocal (50 Kg)', precio: 38000 },
+        { nombre: 'Bicarbonato de sodio (1 Kg)', precio: 4000 },
+        { nombre: 'Bicarbonato de potasio (1 Kg)', precio: 0 },
+        { nombre: 'Sulfato de Hierro (25 Kg)', precio: 250000 },
+        { nombre: 'Sulfato de Hierro (1 Kg)', precio: 12000 },
+        { nombre: 'Sulfato de Cobre (1 Kg)', precio: 29000 },
+        { nombre: 'Sulfato de Cobre (25 Kg)', precio: 700000 },
+        { nombre: 'Cu pentahidro (1 Lt)', precio: 25000 },
+        { nombre: 'Soil Tester Ferkhloe (1 Un)', precio: 520000 },
+        { nombre: 'pHmetro FerKhloe (1 Un)', precio: 450000 },
+        { nombre: 'Repuesto del pHmetro FerKhloe (1 Un)', precio: 150000 },
+        { nombre: 'Sulfato de zinc (25 Kg)', precio: 375000 },
+        { nombre: 'Sulfato de zinc (1 Kg)', precio: 17000 },
+        { nombre: 'Zeolita (1 Kg)', precio: 7000 },
+        { nombre: 'Sulfato de Calcio (1 Kg)', precio: 6000 },
+        { nombre: 'Harina de Rocas (1 Kg)', precio: 3500 },
+        { nombre: 'Alcohol (1 Lt)', precio: 12000 },
+        { nombre: 'Molibdeno (1 Kg)', precio: 175000 },
+        { nombre: 'Sulfato de Cobalto (1 Kg)', precio: 153000 }
     ];
 
     let productosBase = [];
@@ -642,6 +666,14 @@
 
         if (!nombreLimpio) {
             alert('Debe ingresar un nombre de producto.');
+            return false;
+        }
+
+        const esProductoBase = productosBaseIniciales.some(
+            p => p.nombre !== "Seleccione un producto..." && normalizarTexto(p.nombre) === normalizarTexto(nombreLimpio)
+        );
+        if (esProductoBase) {
+            alert('Ese producto ya existe en el catálogo base. Puede cambiar el precio directamente en la fila de la cotización.');
             return false;
         }
 
@@ -1149,6 +1181,63 @@
                 </div>
             </div>
         `).join('');
+    }
+
+    function exportarRespaldo() {
+        const respaldo = {
+            version: 1,
+            fechaExportacion: new Date().toISOString(),
+            consecutivo: obtenerSiguienteConsecutivo(),
+            cotizaciones: JSON.parse(localStorage.getItem(STORAGE_QUOTES)) || [],
+            productosPersonalizados: obtenerProductosPersonalizados()
+        };
+
+        const blob = new Blob([JSON.stringify(respaldo, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `ferkhloe-respaldo-${new Date().toISOString().slice(0,10)}.json`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+    }
+
+    function importarRespaldo(event) {
+        const archivo = event.target.files && event.target.files[0];
+        if (!archivo) return;
+
+        const lector = new FileReader();
+        lector.onload = function(e) {
+            try {
+                const datos = JSON.parse(e.target.result);
+                if (!datos || !Array.isArray(datos.cotizaciones) || !Array.isArray(datos.productosPersonalizados)) {
+                    throw new Error('Formato de respaldo no válido');
+                }
+
+                if (!confirm('Esto reemplazará las cotizaciones y productos personalizados guardados en este dispositivo. ¿Continuar?')) {
+                    event.target.value = '';
+                    return;
+                }
+
+                localStorage.setItem(STORAGE_QUOTES, JSON.stringify(datos.cotizaciones));
+                localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(datos.productosPersonalizados));
+                if (Number.isFinite(Number(datos.consecutivo)) && Number(datos.consecutivo) > 0) {
+                    localStorage.setItem(STORAGE_COUNTER, String(Number(datos.consecutivo)));
+                }
+
+                cargarProductos();
+                renderizarHistorial();
+                refrescarTodosLosSelects();
+                fijarConsecutivoEnPantalla(obtenerSiguienteConsecutivo());
+                alert('Respaldo importado correctamente.');
+            } catch (error) {
+                alert('No se pudo importar el respaldo. Verifique que sea un archivo JSON generado por este cotizador.');
+            } finally {
+                event.target.value = '';
+            }
+        };
+        lector.readAsText(archivo);
     }
 
     function iniciarSistema() {
