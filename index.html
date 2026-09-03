@@ -8,6 +8,8 @@
 <meta content="Ferkhloe integra materias primas para bioinsumos, equipos de medición agrícola, protocolos y servicios técnicos para una agricultura más precisa." name="description"/>
 <meta content="index,follow" name="robots"/>
 <meta content="#063b28" name="theme-color"/>
+<link rel="icon" type="image/png" href="https://ferkhloe.github.io/logo%20ferkhloe.png"/>
+<link rel="apple-touch-icon" href="https://ferkhloe.github.io/logo%20ferkhloe.png"/>
 <link href="https://ferkhloe.github.io/" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="es_CO" property="og:locale"/>
@@ -36,7 +38,10 @@
 
     header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(4,47,32,.08)}
     .nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-    .brand img{width:205px;height:62px;object-fit:contain;object-position:left center}
+    .brand-home{display:flex;align-items:center;gap:10px;padding:6px 10px 6px 6px;border-radius:14px;transition:.2s}
+    .brand-home:hover{background:#f1f8f3}
+    .brand-home img{width:205px;height:62px;object-fit:contain;object-position:left center}
+    .brand-home .home-label{display:inline-flex;align-items:center;min-height:34px;padding:7px 11px;border-radius:999px;background:var(--green-700);color:#fff;font-size:.74rem;font-weight:900;white-space:nowrap}
     .links{display:flex;align-items:center;gap:8px}
     .links a{padding:10px 12px;border-radius:10px;font-size:.88rem;font-weight:800;color:#20372d;text-transform:uppercase;letter-spacing:.02em}
     .links a:hover,.links .active{color:var(--green-700);background:#f1f8f3}
@@ -52,7 +57,6 @@
     .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 18%,rgba(167,217,31,.12),transparent 27%),radial-gradient(circle at 88% 20%,rgba(10,92,134,.18),transparent 25%)}
     .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:.94fr 1.06fr;min-height:650px;align-items:stretch}
     .hero-copy{display:flex;flex-direction:column;justify-content:center;padding:58px 46px 58px 0}
-    .hero-logo{width:250px;height:auto;margin-bottom:20px;filter:brightness(0) invert(1) opacity(.98)}
     .kicker{display:inline-flex;width:max-content;align-items:center;gap:9px;margin-bottom:18px;color:var(--lime-2);font-size:.78rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
     .kicker:before{content:"";width:28px;height:2px;background:var(--lime)}
     h1{margin:0;max-width:720px;font-size:clamp(2.7rem,5.4vw,5.15rem);line-height:.98;letter-spacing:-.06em;text-transform:uppercase}
@@ -114,7 +118,7 @@
 
     footer{background:#041f17;color:rgba(255,255,255,.7)}
     .footer{display:grid;grid-template-columns:1.4fr .8fr 1fr;gap:30px;padding:40px 0 28px}
-    .footer-logo{width:195px;filter:brightness(0) invert(1);margin-bottom:12px}
+    .footer-logo{width:195px;margin-bottom:12px;background:#fff;padding:7px;border-radius:12px;object-fit:contain}
     footer h3{margin:0 0 12px;color:#fff;font-size:.95rem}
     footer p,footer a{font-size:.82rem}
     .footer-links{display:grid;gap:8px}
@@ -133,8 +137,8 @@
       .benefit{border-right:0} .cta-row{flex-direction:column;align-items:flex-start} .footer{grid-template-columns:1fr 1fr}
     }
     @media(max-width:620px){
-      .container{width:min(100% - 26px,var(--container))} .brand img{width:165px}
-      .hero-grid{min-height:auto} .hero-copy{padding:38px 0 28px} .hero-logo{width:210px} h1{font-size:2.55rem}
+      .container{width:min(100% - 26px,var(--container))} .brand-home img{width:150px} .brand-home .home-label{font-size:.68rem;padding:6px 9px}
+      .hero-grid{min-height:auto} .hero-copy{padding:38px 0 28px} h1{font-size:2.55rem}
       .actions{flex-direction:column} .btn{width:100%} .hero-visual{min-height:380px}
       .hero-note{left:16px;right:16px;bottom:16px;max-width:none}
       .cards{grid-template-columns:1fr} .card-media{height:200px} .benefits{grid-template-columns:1fr}
@@ -167,15 +171,23 @@
     @media(max-width:620px){.repo-product-grid{grid-template-columns:1fr}.repo-product img{height:260px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Ferkhloe","url":"https://ferkhloe.github.io/","logo":"https://ferkhloe.github.io/logo%20ferkhloe.png","telephone":"+57-313-774-4450","email":"biofabricaferkhloe@gmail.com"}</script>
-<script defer="True" src="ferkhloe-analytics.js"></script></head>
+<!-- Google Analytics 4 · Ferkhloe -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLWSC6JFK6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RLWSC6JFK6', { send_page_view: true });
+</script>
+</head>
 <body data-pagina="index">
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <header>
 <div class="container nav">
-<a aria-label="Ferkhloe inicio" class="brand" href="./"><img alt="Ferkhloe, vida para el suelo" src="logo%20ferkhloe.png"/></a>
+<a aria-label="Página principal de Ferkhloe" class="brand-home" href="https://ferkhloe.github.io/" data-analytics="inicio" data-analytics-label="Página principal"><img alt="Ferkhloe, vida para el suelo" src="https://ferkhloe.github.io/logo%20ferkhloe.png"/><span class="home-label">Página principal</span></a>
 <button aria-expanded="false" aria-label="Abrir menú" class="toggle" id="toggle"><span></span></button>
 <nav aria-label="Navegación principal" class="links" id="links">
-<a class="active" href="./">Inicio</a>
+<a class="active" href="https://ferkhloe.github.io/" data-analytics="inicio" data-analytics-label="Página principal">Página principal</a>
 <a data-analytics="portafolio" data-analytics-label="Abrir Portafolio" href="portafolio-ferkhloe.html">Portafolio</a>
 <a data-analytics="protocolos" data-analytics-label="Abrir Protocolos HAT" href="protocolos.html">Protocolos HAT</a>
 <a data-analytics="herramientas" data-analytics-label="Abrir Herramientas" href="herramientas.html">Herramientas</a>
@@ -249,19 +261,19 @@
 </div>
 <div class="repo-product-grid">
 <article class="repo-product">
-<img alt="Leonardita Ferkhloe" loading="lazy" src="leonardita%20.png"/>
+<img alt="Leonardita Ferkhloe" loading="lazy" src="https://ferkhloe.github.io/leonardita%20.png"/>
 <div><h3>Leonardita</h3><a data-analytics="portafolio" data-analytics-label="Abrir Portafolio" href="portafolio-ferkhloe.html">Ver portafolio →</a></div>
 </article>
 <article class="repo-product">
-<img alt="Diatomeas Ferkhloe" loading="lazy" src="Diatomeas%20.png"/>
+<img alt="Diatomeas Ferkhloe" loading="lazy" src="https://ferkhloe.github.io/Diatomeas%20.png"/>
 <div><h3>Diatomeas</h3><a data-analytics="portafolio" data-analytics-label="Abrir Portafolio" href="portafolio-ferkhloe.html">Ver portafolio →</a></div>
 </article>
 <article class="repo-product">
-<img alt="Hidróxido de calcio micronizado Ferkhloe" loading="lazy" src="Hidroxido%20de%20calcio%20Micronizado%20.png"/>
+<img alt="Hidróxido de calcio micronizado Ferkhloe" loading="lazy" src="https://ferkhloe.github.io/Hidroxido%20de%20calcio%20Micronizado%20.png"/>
 <div><h3>Hidróxido de calcio micronizado</h3><a data-analytics="portafolio" data-analytics-label="Abrir Portafolio" href="portafolio-ferkhloe.html">Ver portafolio →</a></div>
 </article>
 <article class="repo-product">
-<img alt="Oxiplant Ferkhloe" loading="lazy" src="oxiplant%20.png"/>
+<img alt="Oxiplant Ferkhloe" loading="lazy" src="https://ferkhloe.github.io/oxiplant%20.png"/>
 <div><h3>Oxiplant</h3><a data-analytics="portafolio" data-analytics-label="Abrir Portafolio" href="portafolio-ferkhloe.html">Ver portafolio →</a></div>
 </article>
 </div>
@@ -278,7 +290,13 @@
 <span class="tool-no">01</span>
 <h3>Bioindicadores Ferkhloe</h3>
 <p>Consulta dinámica de cultivos, problemas fitosanitarios y herramientas de manejo.</p>
-<a data-analytics="bioindicadores" data-analytics-label="Abrir Bioindicadores" href="https://ferkhloe.github.io/Bioindicadores%20Ferkhloe%20actualizado.html">Abrir bioindicadores →</a>
+<a data-analytics="bioindicadores" data-analytics-label="Abrir Bioindicadores" href="Bioindicadores%20Ferkhloe%20actualizado%20.html">Abrir bioindicadores →</a>
+</article>
+<article class="tool-box">
+<span class="tool-no">02</span>
+<h3>Interpretador Ferkhloe</h3>
+<p>Interpretación técnica de lecturas del Soil Tester, con semáforo y recomendaciones para apoyar el manejo del cultivo.</p>
+<a data-analytics="interpretador_ferkhloe" data-analytics-label="Abrir Interpretador Ferkhloe" href="INTERPRETADOR%20FERKHLOE%20.html">Abrir interpretador →</a>
 </article>
 <article class="tool-box">
 <span class="tool-no">03</span>
@@ -320,7 +338,7 @@
 </main>
 <footer id="contacto">
 <div class="container footer">
-<div><img alt="Ferkhloe" class="footer-logo" src="logo%20ferkhloe.png"/><p>Bioinsumos, tecnología y acompañamiento técnico para una agricultura más precisa.</p></div>
+<div><a href="https://ferkhloe.github.io/" aria-label="Página principal de Ferkhloe"><img alt="Ferkhloe, vida para el suelo" class="footer-logo" src="https://ferkhloe.github.io/logo%20ferkhloe.png"/></a><p>Bioinsumos, tecnología y acompañamiento técnico para una agricultura más precisa.</p></div>
 <div><h3>Secciones</h3><div class="footer-links">
 <a data-analytics="portafolio" data-analytics-label="Abrir Portafolio" href="portafolio-ferkhloe.html">Portafolio</a>
 <a data-analytics="protocolos" data-analytics-label="Abrir Protocolos HAT" href="protocolos.html">Protocolos HAT</a>
@@ -337,73 +355,16 @@ const toggle=document.getElementById('toggle'),links=document.getElementById('li
 if(toggle&&links){toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!open));links.classList.toggle('open')});links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));}
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
-<script type="module">
-  // ===== Ferkhloe · registro privado de estadísticas =====
-  // Este bloque solo ESCRIBE eventos (visitas, clics en WhatsApp). Nadie puede
-  // leer estos datos desde aquí: la lectura está bloqueada en las reglas de
-  // seguridad de Firestore y solo funciona desde admin.html con la cuenta
-  // autorizada. No hay ningún contador visible en esta página.
-  import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.17.0/firebase-app.js';
-  import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.17.0/firebase-firestore.js';
-
-  // ⚠️ Reemplaza estos valores por los de tu proyecto de Firebase
-  // (Firebase Console → Configuración del proyecto → Tus apps → SDK config).
-  // El "apiKey" aquí NO es una contraseña: solo identifica el proyecto.
-  // La seguridad real la dan las reglas de Firestore, no este objeto.
-  const firebaseConfig = {
-    apiKey: "TU_API_KEY",
-    authDomain: "TU_PROYECTO.firebaseapp.com",
-    projectId: "TU_PROYECTO",
-    storageBucket: "TU_PROYECTO.appspot.com",
-    messagingSenderId: "TU_SENDER_ID",
-    appId: "TU_APP_ID"
-  };
-
-  const firebaseConfigured =
-    firebaseConfig.apiKey !== "TU_API_KEY" &&
-    firebaseConfig.projectId !== "TU_PROYECTO" &&
-    firebaseConfig.appId !== "TU_APP_ID";
-
-  if (firebaseConfigured) {
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    function ferkhloeDispositivo(){
-      const w = window.innerWidth;
-      if (w < 768) return 'celular';
-      if (w < 1100) return 'tableta';
-      return 'computador';
-    }
-
-    function ferkhloeVisitorId(){
-      let id = localStorage.getItem('ferkhloe_vid');
-      if (!id) {
-        id = (crypto.randomUUID ? crypto.randomUUID() : (Date.now() + '-' + Math.random().toString(16).slice(2)));
-        localStorage.setItem('ferkhloe_vid', id);
-      }
-      return id;
-    }
-
-    window.ferkhloeTrack = function (tipo, datos) {
-      datos = datos || {};
-      addDoc(collection(db, 'eventos'), Object.assign({
-        tipo: tipo,
-        pagina: document.body.dataset.pagina || location.pathname,
-        dispositivo: ferkhloeDispositivo(),
-        visitorId: ferkhloeVisitorId(),
-        timestamp: serverTimestamp()
-      }, datos)).catch(function(){});
-    };
-
-    window.ferkhloeTrack('visita');
-
-    document.addEventListener('click', function (e) {
-      const wa = e.target.closest('a[href*="wa.me"]');
-      if (wa) window.ferkhloeTrack('whatsapp_click');
+<script>
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('[data-analytics]');
+    if (!link || typeof gtag !== 'function') return;
+    gtag('event', 'ferkhloe_click', {
+      action: link.dataset.analytics || 'click',
+      event_label: link.dataset.analyticsLabel || (link.textContent || '').trim(),
+      link_url: link.href || ''
     });
-  } else {
-    window.ferkhloeTrack = function(){};
-  }
+  });
 </script>
 </body>
 </html>
