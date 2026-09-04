@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ferkhloe.github.io/mapa%20del%20sitio.xml
+Sitemap: https://ferkhloe.github.io/sitemap.xml
