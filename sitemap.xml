@@ -1,35 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://ferkhloe.github.io/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://ferkhloe.github.io/portafolio-ferkhloe.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://ferkhloe.github.io/protocolos.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
+
   <url>
     <loc>https://ferkhloe.github.io/herramientas.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
+
   <url>
     <loc>https://ferkhloe.github.io/cotizaciones.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://ferkhloe.github.io/Bioindicadores%20Ferkhloe%20actualizado%20.html</loc>
+    <loc>https://ferkhloe.github.io/Bioindicadores%20Ferkhloe%20actualizados.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://ferkhloe.github.io/INTERPRETADOR%20FERKHLOE%20.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://ferkhloe.github.io/diagnostico%20ph%20ferkhloe.html</loc>
+    <loc>https://ferkhloe.github.io/diagn%C3%B3stico%20ph%20ferkhloe.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://ferkhloe.github.io/interpretador%20de%20cafe%20.html</loc>
-<url>
-  <loc>https://ferkhloe.github.io/interpretador-ph-cultivos.html</loc>
-  <lastmod>2026-09-03</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.9</priority>
+    <loc>https://ferkhloe.github.io/interpretador%20de%20caf%C3%A9%20.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://ferkhloe.github.io/interpretador-ph-cultivos.html</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>
